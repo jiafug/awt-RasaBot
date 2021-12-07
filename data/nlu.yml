@@ -1,0 +1,279 @@
+version: "2.0"
+nlu:
+  - intent: greet
+    examples: |
+      - Grüß Gott!
+      - Guten Abend
+      - Guten Morgen
+      - Guten Tag
+      - Guten Tag bot
+      - Guten Tag lieber bot
+      - hallo
+      - Hallo bot.
+      - Hallo du bot
+      - Hallo du da
+      - Hallo lieber bot.
+      - Hallo.
+      - hey
+      - Hey bot
+      - Hey bot kannst du hallo sagen
+      - Hey robo
+      - Hey!
+      - Hi
+      - hi bot
+      - Hi bot kannst du hallo sagen
+      - Hi hallo
+      - huhu
+      - huhu bot
+      - huhu du da
+      - huhu hallo
+      - huhu sag mal hallo
+      - Kannst du hallo sagen
+      - Kannst du uns begrüßen
+      - Kannst mich begrüßen
+      - Mahlzeit!
+      - Moin
+      - Moin moin!
+      - Moin!
+      - Moin, bot kannst du hallo sagen
+      - Na du bot, sag mal hallo
+      - Na du sag mal hallo
+      - Na du, bot
+      - Na du?!
+      - Sag mal hallo
+      - Sag mal hallo.
+      - sei gegrüßt
+      - sei gegrüßt bot
+      - Servus
+      - Servus bot
+  - intent: goodbye
+    examples: |
+      - Auf Wiederschauen
+      - Auf Wiederschauen bot
+      - auf wiedersehen
+      - Auf Wiedersehen bot
+      - Auf Wiedersehen, chat bot.
+      - bis bald
+      - bis bald bot
+      - bis dann
+      - bis dann bot
+      - bis demnächst
+      - bis demnächst bot
+      - bis denn
+      - bis denn bot
+      - bis die Tage
+      - bis die Tage bot
+      - Bis morgen
+      - Bis morgen bot
+      - bis nachher
+      - bis nachher bot
+      - Bis später
+      - Bis später bot
+      - bis zum nächsten Mal
+      - bis zum nächsten Mal bot
+      - Bis zum nächsten Mal. Tschau.
+      - bye
+      - Ciao.
+      - Einen schönen Tag noch
+      - Ich gehe jetzt
+      - Ich verabschiede mich jetzt
+      - Mach es gut
+      - Machs gut!
+      - man sieht sich
+      - Man sieht sich!
+      - Pass gut auf dich auf!
+      - Schön Feierabend
+      - Schönen Abend noch
+      - Schönen Tag
+      - schönen tag noch
+      - Schönes Wochenende
+      - Tschau
+      - tschüs
+      - tschüs bot
+      - Tschüss chat bot.
+      - tschüss tschüss
+      - Tschüss.
+      - Wir sehen uns das nächste mal
+      - Wir sehen uns später
+      - Wir sehen uns!
+  - intent: affirm
+    examples: |
+      - Alles klar bot
+      - Alles klar.
+      - auf jeden fall
+      - Dann erzähl mal bot
+      - Dann erzähl mal.
+      - das klingt gut
+      - Erzähle mir mehr
+      - Erzähle noch mehr
+      - gern
+      - gern bot
+      - Gerne.
+      - Gerne. Ja.
+      - gut
+      - Ich will mehr darüber wissen.
+      - in der Tat
+      - ja
+      - ja
+      - Ja bitte.
+      - ja bot
+      - Ja doch, erzähl mal.
+      - Ja erzähl mal noch ein bisschen mehr.
+      - Ja erzähl mal noch ein bisschen.
+      - Ja erzähl mal.
+      - Ja gerne.
+      - Ja ja doch.
+      - Ja ja, hab ich.
+      - Ja klar.
+      - Ja, erzähl mal was.
+      - Ja.
+      - Jo.
+      - johr
+      - Na gut.
+      - Na immer mehr.
+      - na klar
+      - Na klar bot
+      - Na klar.
+      - natürlich
+      - Natürlich bot
+      - Natürlich.
+      - Noch mehr.
+      - nu klar
+      - nu klar bot
+      - ok
+      - ok bot
+      - okay
+      - okay bot
+      - Okay, dann kommen wir mal wieder.
+      - Okay.
+      - richtig
+      - Sehr gern bot
+      - Sehr gern.
+      - y
+  - intent: deny
+    examples: |
+      - ablehnen
+      - absolut nicht
+      - auf keinen Fall
+      - Danke, aber nein danke
+      - das ist scheiße
+      - definitiv nicht
+      - es ist scheiße
+      - es läuft ziemlich schlecht
+      - es läuft überhaupt nicht gut
+      - geht nicht
+      - hör auf, es ist mir egal!!!
+      - Ich bin mir nicht sicher.
+      - Ich brauche keine Hilfe bei der Installation
+      - ich denke nicht so
+      - Ich fürchte nein
+      - Ich gebe dir meine Email-Adresse nicht
+      - ich lehne ab
+      - Ich mag das nicht
+      - ich mag das nicht
+      - Ich möchte es noch nicht sagen
+      - Ich möchte nicht
+      - ich schätze, das bedeutet - nein
+      - Ich stimme nicht zu
+      - Ich werde sie dir nicht geben
+      - Ich will das nicht.
+      - Ich will den Namen meiner Firma nicht verraten.
+      - Ich will dir meine E-Mail nicht geben.
+      - Ich will es dir nicht geben
+      - Ich will es nicht sagen
+      - ich will keines von beiden
+      - Ich will nicht
+      - ich will nicht annehmen :P lol
+      - im Moment nicht
+      - kein Danke
+      - keine Möglichkeit
+      - keiner von ihnen
+      - n
+      - na
+      - nah, erstes Mal
+      - nah, mir geht's gut
+      - Neeeeeeeeeiiiiiiiiiiiiiiiiiiiin
+      - nehi
+      - nein
+      - nein :(
+      - nein danke
+      - nein danke s
+      - nein du hast es falsch gemacht
+      - nein ich akzeptiere nicht
+      - nein ich habe noch nicht entschieden, ob ich mich anmelden will
+      - nein ich will nicht
+      - nein ich will nicht annehmen :P lol
+      - nein Sir
+      - nein und nochmals nein
+      - nein!!!!
+      - Nein, danke
+      - Nein, eigentlich nicht.
+      - Nein, ich danke Ihnen
+      - Nein, ich hasse es
+      - NEIN, ICH WILL DAS NICHT!
+      - Nein, Ma'am
+      - Nein, mein erstes Mal
+      - Nein, mir geht's gut
+      - Nein, nicht für mich
+      - Nein, stopp!
+      - Nein, tut mir leid.
+      - Nein. Du bist ein Idiot.
+      - nicht
+      - nicht wirklich
+      - nie
+      - Niemals
+      - no
+      - noch nicht
+      - Nö
+      - nö. mir gehts gut
+      - tut mir leid, jetzt noch nicht
+  - intent: thanks
+    examples: |
+      - cool, danke
+      - Danke
+      - danke bot
+      - danke für alles
+      - danke für die hilfe
+      - großartig vielen dank
+      - ja danke
+      - lieben dank
+      - ok danke
+      - ok vielen dank
+      - perfekt danke
+      - toll danke
+      - vielen dank
+      - vielen lieben dank
+  - intent: mood_great
+    examples: |
+      - perfekt
+      - großartig
+      - sich wie ein König fühlen
+      - wunderbar
+      - Ich fühle mich sehr gut
+      - Ich bin großartig
+      - Ich bin erstaunlich
+      - Ich werde die Welt retten
+      - super aufgeregt
+      - extrem gut
+      - so perfekt
+      - so gut
+  - intent: mood_unhappy
+    examples: |
+      - mein Tag war furchtbar
+      - Ich bin traurig
+      - Ich fühle mich nicht sehr gut
+      - Ich bin enttäuscht
+      - super traurig
+      - Ich bin so traurig
+      - traurig
+      - sehr traurig
+      - unglücklich
+      - nicht gut
+      - nicht sehr gut
+      - so traurig
+  - intent: bot_challenge
+    examples: |
+      - Bist du ein Bot?
+      - Sind Sie ein Mensch?
+      - Spreche ich mit einem Bot?
+      - Spreche ich mit einem Menschen?
