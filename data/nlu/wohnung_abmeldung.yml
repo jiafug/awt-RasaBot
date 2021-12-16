@@ -1,0 +1,8 @@
+version: "2.0"
+nlu:
+  - intent: wohnung_abmelden
+    examples: |
+      - Wohnung abmelden
+      - abmelden
+      - Ich würde eine Wohnung abmelden
+      - Ich möchte mich abmelden

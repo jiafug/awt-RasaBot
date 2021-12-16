@@ -1,9 +1,12 @@
 .DS_Store
+.rasa
+.vscode
 actions/__pycache__/
-models/
+components/__pycache__
 events.db
 events.db-shm
 events.db-wal
+models/
 rasa.db
 rasa.db-shm
 rasa.db-wal

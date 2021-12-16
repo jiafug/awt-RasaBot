@@ -1,0 +1,15 @@
+version: "2.0"
+
+rules:
+- rule: user begruessen
+  conversation_start: true  # this rule only applies at the beginning of a conversation
+  steps:
+    - intent: begruessen
+    - action: utter_gruessen
+
+- rule: user verabschieden
+  conversation_start: true  # this rule only applies at the beginning of a conversation
+  steps:
+    - intent: verabschieden
+    - action: utter_verabschieden
+

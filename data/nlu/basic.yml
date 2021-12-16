@@ -1,9 +1,9 @@
 version: "2.0"
 nlu:
-  - intent: greet
+  - intent: begruessen
     examples: |
       - Grüß Gott!
-      - Guten Abend
+      - Graten Abend
       - Guten Morgen
       - Guten Tag
       - Guten Tag bot
@@ -46,7 +46,7 @@ nlu:
       - sei gegrüßt bot
       - Servus
       - Servus bot
-  - intent: goodbye
+  - intent: verabschieden
     examples: |
       - Auf Wiederschauen
       - Auf Wiederschauen bot
@@ -96,7 +96,7 @@ nlu:
       - Wir sehen uns das nächste mal
       - Wir sehen uns später
       - Wir sehen uns!
-  - intent: affirm
+  - intent: bestaetigen
     examples: |
       - Alles klar bot
       - Alles klar.
@@ -150,7 +150,7 @@ nlu:
       - Sehr gern bot
       - Sehr gern.
       - y
-  - intent: deny
+  - intent: ablehnen
     examples: |
       - ablehnen
       - absolut nicht
@@ -227,7 +227,7 @@ nlu:
       - Nö
       - nö. mir gehts gut
       - tut mir leid, jetzt noch nicht
-  - intent: thanks
+  - intent: danken
     examples: |
       - cool, danke
       - Danke
@@ -277,3 +277,106 @@ nlu:
       - Sind Sie ein Mensch?
       - Spreche ich mit einem Bot?
       - Spreche ich mit einem Menschen?
+  - intent: bot_features
+    examples: |
+      - Was kannst Du?
+      - Was können Sie?
+      - Was kann ich machen?
+      - Können Sie mir in einem Satz erklären, was Sie tun?
+      - Können Sie mir helfen?
+      - Könnten Sie mir bitte zeigen, was Sie können?
+      - Toll, gibt es noch etwas, was Sie tun können, Bot?
+      - Wie können Sie mir helfen?
+      - Wie kannst du mir helfen?
+      - Ich brauche Hilfe
+      - Ich brauche etwas Hilfe
+      - Was sind meine Möglichkeiten?
+      - Was können Sie tun?
+      - Worum kann ich Sie bitten?
+      - Was kann ich tun?
+      - Was können Sie vorführen?
+      - Was können Sie für mich tun?
+      - Was können Sie mir sagen?
+      - Was könnt ihr tun
+      - irgendetwas anderes
+      - Gibt es noch andere Möglichkeiten?
+      - Kann ich Sie noch etwas fragen?
+      - Können Sie sonst noch etwas tun?
+      - Können Sie mir helfen?
+      - Können Sie mir helfen?
+      - Kommen Sie zurück
+      - Cool! Kann ich hier noch etwas tun?
+      - Hallo, was können Sie für mich tun?
+      - helfen
+      - hilf mir
+      - bitte helfen
+      - helfen Sie bitte
+      - helfen?
+      - helfen Sie mir
+      - Hallo. Sara was tust du?
+      - Hm, das hilft mir nicht wirklich weiter, gibt es noch etwas, was Sie tun können?
+      - Wie kann ich dich gebrauchen?
+      - wie kannst du mir helfen?
+      - wie kannst du mir helfen?
+      - Wie können Sie helfen?
+      - Wie funktioniert das?
+      - Wie können Sie mir helfen?
+      - wie Sie mir helfen können
+      - Ich habe Sie gefragt, ob Sie noch etwas anderes tun können
+      - Ich weiß nicht, was ich will
+      - Ich brauche Hilfe
+      - mehr Infos
+      - Was nun?
+      - Optionen
+      - zeige mir das Menü
+      - zeige mir, was möglich ist
+      - was nun?
+      - was kannst du also tun?
+      - Was können Sie also tun?
+      - womit können Sie mir also helfen?
+      - Und was nun?
+      - rede mit mir
+      - Sprich mit mir!
+      - Sag mir, was du tun kannst
+      - Sag mir, was du kannst
+      - ähm was jetzt
+      - Was sind die Dinge, die du verstehst?
+      - Was sind die Möglichkeiten?
+      - was tust du
+      - was tust du
+      - was kannst du gut?
+      - Was kann ich fragen?
+      - Was kann ich Sie fragen?
+      - Was kann ich hier tun?
+      - Was kann ich mit Sara tun?
+      - Was kann ich mit diesem Bot machen?
+      - Was kann ich hier tun?
+      - Was kann ich jetzt tun?
+      - Was kannst du tun?
+      - Worüber können wir reden?
+      - Was können Sie antworten?
+      - Was können Sie tun?
+      - Was kannst du für mich tun?
+      - Was kannst du tun, Sara?
+      - Was kannst du tun?
+      - Was können Sie mir anbieten?
+      - Was kannst Du mir sagen?
+      - was kannst du?
+      - was kannst du für mich tun?
+      - Was tun Sie?
+      - Was tun Sie?
+      - Was wissen Sie außer dem hier?
+      - Was kann ich hier noch tun?
+      - Was kann ich sonst noch tun?
+      - Was können Sie sonst noch tun?
+      - Womit können Sie sonst noch helfen?
+      - Was muss ich tun?
+      - Wofür ist dieser Bot?
+      - Was können Sie tun?
+      - Was können Sie für mich tun?
+      - Was können Sie tun?
+      - was tun Sie?
+      - wovon reden Sie?
+      - Sie können mir helfen
+      - Was können Sie mir beibringen?
+      - Was können Sie

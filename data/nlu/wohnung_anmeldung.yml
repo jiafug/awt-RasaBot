@@ -1,0 +1,10 @@
+version: "2.0"
+nlu:
+  - intent: wohnung_anmelden
+    examples: |
+      - Wohnung anmelden
+      - anmelden
+      - Ich würde eine Wohnung anmelden
+      - ich bin neu in der Stadt
+      
+  
