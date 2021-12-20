@@ -19,6 +19,9 @@ intents:
           use_entities: true
 entities: []
 slots: {}
+actions: []
+forms: {}
+e2e_actions: []
 responses:
     utter_gruessen:
         - text: Hallo, wie kann ich Ihnen behilflich sein?
@@ -26,6 +29,3 @@ responses:
         - text: Auf wiedersehen!
     utter_wohung_anmelden:
         - text: Möchten Sie sich anmelden?
-actions: []
-forms: {}
-e2e_actions: []
