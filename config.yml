@@ -7,9 +7,9 @@ pipeline:
   - name: SpacyNLP
     model: "de_core_news_sm"
     case_sensitive: False
-  - name: "components.LanguageDetection.MyComponent"
+  - name: components.LanguageDetection.MyComponent
   - name: SpacyTokenizer
-  - name: "components.SentimentAnalysis.MyComponent"
+  - name: components.SentimentAnalysis.MyComponent
   - name: SpacyFeaturizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
