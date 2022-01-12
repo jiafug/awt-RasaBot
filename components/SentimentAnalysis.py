@@ -66,7 +66,7 @@ class MyComponent(Component):
                 senti = "neutral"
             entity = [{
                 'value': senti,
-                'confidence': str(val_of_max),
+                'confidence': float(val_of_max),
                 'entity': 'sentiment',
                 'extractor:': 'sentiment_extractor'
             }]

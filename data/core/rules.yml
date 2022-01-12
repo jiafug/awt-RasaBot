@@ -17,3 +17,8 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_nicht_verstanden
+
+- rule: answer bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

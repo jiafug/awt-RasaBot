@@ -45,7 +45,7 @@ class MyComponent(Component):
             language, confidence = MyComponent.get_info(pred)
             entity = [{
                 'value': language,
-                'confidence': confidence,
+                'confidence': float(confidence),
                 'entity': 'language',
                 'extractor:': 'language_extractor'
             }]
@@ -97,7 +97,7 @@ class MyComponent(Component):
         val_of_max = np.amax(pred)
         language = LABELS_STOI[lang_label[idx_of_max]]
         confidence = val_of_max
-        return language, str(confidence)
+        return language, confidence
 
     def persist(self, file_name: Text,
                 model_dir: Text) -> Optional[Dict[Text, Any]]:
