@@ -6,6 +6,7 @@ intents:
 - ablehnen
 - begruessen
 - bestaetigen
+- bestaetigena
 - bot_challenge
 - bot_features
 - danken
@@ -28,6 +29,11 @@ responses:
   - text: Tut mir Leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
   utter_default:
   - text: Tut mir Leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
+  utter_iamabot:
+  - text: Ich bin ein Bot.
 actions:
 - action_trigger_human_fallback
 - action_hello_world
+entities:
+- language
+- sentiment
