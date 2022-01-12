@@ -11,6 +11,7 @@ intents:
 - danken
 - mood_great
 - mood_unhappy
+- nlu_fallback
 - verabschieden
 - wohnung_abmelden
 - wohnung_anmelden
@@ -29,3 +30,4 @@ responses:
   - text: Tut mir Leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
 actions:
 - action_trigger_human_fallback
+- action_hello_world

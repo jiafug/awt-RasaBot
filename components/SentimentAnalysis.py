@@ -25,14 +25,18 @@ class MyComponent(Component):
     def required_components(cls) -> List[Type[Component]]:
         return []
 
-    def __init__(self, component_config: Optional[Dict[Text, Any]] = None) -> None:
+    def __init__(self,
+                 component_config: Optional[Dict[Text, Any]] = None) -> None:
         super().__init__(component_config)
         dirname = os.path.dirname(__file__)
-        model_path = os.path.join(dirname, '../notebooks/models/fasttext-v2-model-100.pt')
-        vocab_path = os.path.join(dirname, '../notebooks/models/fasttext-v2-vocab-100.pt')
+        model_path = os.path.join(
+            dirname, '../notebooks/models/fasttext-v2-model-100.pt')
+        vocab_path = os.path.join(
+            dirname, '../notebooks/models/fasttext-v2-vocab-100.pt')
         self.vocab = torch.load(vocab_path)
         self.model = FastText(3, 100002, 300, 10, 1)
-        self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
+        self.model.load_state_dict(
+            torch.load(model_path, map_location=torch.device('cpu')))
         self.model.eval()
 
     def train(
@@ -49,18 +53,29 @@ class MyComponent(Component):
             tok_list = []
             for tok in text:
                 tok_list.append(tok.text)
-            senti = self.model.predict_sentiment(self.model, self.vocab, tok_list)
-            idx_of_max = np.argmax(senti.flatten().detach().numpy())
+            pred = self.model.predict_sentiment(self.model, self.vocab,
+                                                tok_list)
+            np_array = pred.flatten().detach().numpy()
+            val_of_max = np.amax(np_array)
+            idx_of_max = np.argmax(np_array)
             if idx_of_max == 0:
                 senti = "positive"
             elif idx_of_max == 1:
-                senti ="negative"
+                senti = "negative"
             else:
-                senti="neutral"
-            message.set('sentiment', senti, add_to_output=True)
-            #print(message.data)
+                senti = "neutral"
+            entity = [{
+                'value': senti,
+                'confidence': str(val_of_max),
+                'entity': 'sentiment',
+                'extractor:': 'sentiment_extractor'
+            }]
+            message.set('entities',
+                        message.get('entities', []) + entity,
+                        add_to_output=True)
 
-    def persist(self, file_name: Text, model_dir: Text) -> Optional[Dict[Text, Any]]:
+    def persist(self, file_name: Text,
+                model_dir: Text) -> Optional[Dict[Text, Any]]:
         pass
 
     @classmethod
