@@ -1,31 +1,31 @@
-version: "2.0"
-config:
-    store_entities_as_slots: true
+version: '2.0'
 session_config:
-    session_expiration_time: 60
-    carry_over_slots_to_new_session: true
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-    - begruessen:
-          use_entities: false
-    - verabschieden:
-          use_entities: true
-    - bestaetigen:
-          use_entities: true
-    - ablehnen:
-          use_entities: true
-    - danken:
-          use_entities: true
-    - wohnung_anmelden:
-          use_entities: true
-entities: []
-slots: {}
-actions: []
-forms: {}
-e2e_actions: []
+- ablehnen
+- begruessen
+- bestaetigen
+- bot_challenge
+- bot_features
+- danken
+- mood_great
+- mood_unhappy
+- verabschieden
+- wohnung_abmelden
+- wohnung_anmelden
 responses:
-    utter_gruessen:
-        - text: Hallo, wie kann ich Ihnen behilflich sein?
-    utter_verabschieden:
-        - text: Auf wiedersehen!
-    utter_wohung_anmelden:
-        - text: Möchten Sie sich anmelden?
+  utter_gruessen:
+  - text: Hallo, wie kann ich Ihnen behilflich sein?
+  utter_verabschieden:
+  - text: Auf wiedersehen!
+  utter_wohung_anmelden:
+  - text: Möchten Sie sich anmelden?
+  utter_wohung_abmelden:
+  - text: Möchten Sie sich abmelden?
+  utter_nicht_verstanden:
+  - text: Tut mir Leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
+  utter_default:
+  - text: Tut mir Leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
+actions:
+- action_trigger_human_fallback

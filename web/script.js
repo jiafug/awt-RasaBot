@@ -9,6 +9,7 @@ function generateId(length) {
   for (var i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
+  console.log("ID: " + result)
   return result;
 }
 
