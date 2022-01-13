@@ -1,14 +1,14 @@
-import pytorch_lightning as pl
 import torch.nn as nn
 from HanTa import HanoverTagger as ht
 from torch import LongTensor
 
 
-class FastText(pl.LightningModule):
-    
+class FastText(nn.Module):
+
     tagger = ht.HanoverTagger('morphmodel_ger.pgz')
 
-    def __init__(self, output_dim, vocab_size, embedding_dim, hidden_size, pad_idx):
+    def __init__(self, output_dim, vocab_size, embedding_dim, hidden_size,
+                 pad_idx):
         super().__init__()
         # embedding layer
         self.embedding = nn.Embedding(vocab_size,
@@ -39,7 +39,10 @@ class FastText(pl.LightningModule):
     def lemmatize(string_list):
         lemmas = []
         for string in string_list:
-            lemma = [lemma for (word, lemma, pos) in FastText.tagger.tag_sent(string.split())]
+            lemma = [
+                lemma for (word, lemma,
+                           pos) in FastText.tagger.tag_sent(string.split())
+            ]
             lemmas.append(' '.join(lemma))
         return lemmas
 
