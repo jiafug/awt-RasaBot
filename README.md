@@ -57,3 +57,15 @@ open simple web GUI located in the following location:
 ```
 /web/index.html
 ```
+
+## Overview of the files
+
+- `/actions/actions.py` - contains custom action/api code
+- `/components/*` - contains custom NLU components (i.e. sentiment analysis & language detection)
+- `/data/core/*` -  contains rules and stories training data
+- `/data/nlu/*` - contains NLU training data
+- `/notebooks/*` - contains standalone prototype code as jupyter notebooks
+- `/notebooks/models/*` - contains models for custom NLU components
+- `/config.yml` - training configurations for the NLU pipeline and policy ensemble
+- `/domain.yml` - the domain file, including bot response templates
+- `/web/*` - simple web frontend GUI
