@@ -13,23 +13,27 @@ stories:
       - action: utter_wohung_abmelden
       - intent: bestaetigen
 
+  - story: falsche sprache fallback
+    steps:
+      - intent: nlu_fallback
+      - slot_was_set:
+          - language: __other__
+      - action: utter_nicht_verstanden
+      - intent: nlu_fallback
+      - slot_was_set:
+          - language: __other__
+      - action: utter_default
+      - action: action_restart
+
   - story: nicht verstanden fallback (neutral & positive sentiment)
     steps:
-      - or:
-          - intent: nlu_fallback
-            entities:
-              - sentiment: "neutral"
-          - intent: nlu_fallback
-            entities:
-              - sentiment: "positive"
+      - intent: nlu_fallback
+      - slot_was_set:
+          - sentiment: __other__
       - action: utter_nicht_verstanden
-      - or:
-          - intent: nlu_fallback
-            entities:
-              - sentiment: "neutral"
-          - intent: nlu_fallback
-            entities:
-              - sentiment: "positive"
+      - intent: nlu_fallback
+      - slot_was_set:
+          - sentiment: __other__
       - action: utter_default
       - action: action_restart
 
@@ -37,9 +41,9 @@ stories:
     steps:
       - intent: nlu_fallback
       - slot_was_set:
-          - sentiment: "negative"
+          - sentiment: negative
       - intent: nlu_fallback
       - slot_was_set:
-          - sentiment: "negative"
+          - sentiment: negative
       - action: utter_default
       - action: action_restart

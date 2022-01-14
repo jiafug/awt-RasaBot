@@ -21,11 +21,15 @@ entities:
 - sentiment
 slots:
   language:
-    type: text
     influence_conversation: true
+    type: categorical
+    values:
+    - deu
   sentiment:
-    type: text
     influence_conversation: true
+    type: categorical
+    values:
+    - negative
 responses:
   utter_gruessen:
   - text: Hallo, wie kann ich Ihnen behilflich sein?
@@ -44,3 +48,4 @@ responses:
 actions:
 - action_trigger_human_fallback
 - action_hello_world
+- action_language_slot
