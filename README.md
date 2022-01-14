@@ -38,6 +38,8 @@ start Rasa X:
 rasa x
 ```
 
+> Note: Entities are only mapped internally to categorical slots, meaning they are still represented as their original found value in `rasa interactive` mode as well as `rasa x` mode. For reference see: https://github.com/RasaHQ/rasa/issues/8755
+
 ### Production
 
 start Rasa actions server:
