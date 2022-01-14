@@ -16,6 +16,16 @@ intents:
 - verabschieden
 - wohnung_abmelden
 - wohnung_anmelden
+entities:
+- language
+- sentiment
+slots:
+  language:
+    type: text
+    influence_conversation: true
+  sentiment:
+    type: text
+    influence_conversation: true
 responses:
   utter_gruessen:
   - text: Hallo, wie kann ich Ihnen behilflich sein?
@@ -34,6 +44,3 @@ responses:
 actions:
 - action_trigger_human_fallback
 - action_hello_world
-entities:
-- language
-- sentiment
