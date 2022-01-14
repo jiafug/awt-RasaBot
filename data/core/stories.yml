@@ -3,30 +3,35 @@ version: "2.0"
 stories:
   - story: wohnung anmelden
     steps:
-      - action: utter_gruessen
       - intent: wohnung_anmelden
       - action: utter_wohung_anmelden
       - intent: bestaetigen
 
   - story: wohnung abmelden
     steps:
-      - action: utter_gruessen
       - intent: wohnung_abmelden
       - action: utter_wohung_abmelden
       - intent: bestaetigen
 
-  - story: nicht verstanden fallback (neutral sentiment)
+  - story: nicht verstanden fallback (neutral & positive sentiment)
     steps:
-      - intent: nlu_fallback
-      - slot_was_set:
-          - sentiment: "neutral"
-          - sentiment: "positive"
+      - or:
+          - intent: nlu_fallback
+            entities:
+              - sentiment: "neutral"
+          - intent: nlu_fallback
+            entities:
+              - sentiment: "positive"
       - action: utter_nicht_verstanden
-      - intent: nlu_fallback
-      - slot_was_set:
-          - sentiment: "neutral"
-          - sentiment: "positive"
-      - action: utter_nicht_verstanden
+      - or:
+          - intent: nlu_fallback
+            entities:
+              - sentiment: "neutral"
+          - intent: nlu_fallback
+            entities:
+              - sentiment: "positive"
+      - action: utter_default
+      - action: action_restart
 
   - story: nicht verstanden fallback (negative sentiment)
     steps:
@@ -37,3 +42,4 @@ stories:
       - slot_was_set:
           - sentiment: "negative"
       - action: utter_default
+      - action: action_restart
