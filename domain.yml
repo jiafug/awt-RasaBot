@@ -21,13 +21,13 @@ entities:
 - sentiment
 slots:
   language:
-    influence_conversation: true
     type: categorical
+    influence_conversation: true
     values:
     - deu
   sentiment:
-    influence_conversation: true
     type: categorical
+    influence_conversation: true
     values:
     - negative
 responses:
@@ -39,13 +39,18 @@ responses:
   - text: Möchten Sie sich anmelden?
   utter_wohung_abmelden:
   - text: Möchten Sie sich abmelden?
-  utter_nicht_verstanden:
-  - text: Tut mir Leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
-  utter_default:
-  - text: Tut mir Leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
+  utter_ask_rephrase:
+  - text: Tut mir leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
+  utter_bad_sentiment:
+  - text: Tut mir leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
   utter_iamabot:
   - text: Ich bin ein Bot.
+  utter_wrong_language:
+  - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
+  utter_default:
+  - text: Es tut mir leid, ich kann dir nicht helfen.
 actions:
 - action_trigger_human_fallback
 - action_hello_world
 - action_language_slot
+- action_two_stage_fallback

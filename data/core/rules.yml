@@ -12,8 +12,19 @@ rules:
     steps:
       - intent: verabschieden
       - action: utter_verabschieden
+    wait_for_user_input: false
 
   - rule: answer bot challenge
     steps:
       - intent: bot_challenge
       - action: utter_iamabot
+
+  - rule: nicht verstanden fallback (neutral & positive sentiment)
+    condition:
+      - slot_was_set:
+          - language: deu
+          - sentiment: __other__
+    steps:
+      - intent: nlu_fallback
+      - action: action_two_stage_fallback
+      - active_loop: action_two_stage_fallback

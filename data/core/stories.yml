@@ -18,23 +18,11 @@ stories:
       - intent: nlu_fallback
       - slot_was_set:
           - language: __other__
-      - action: utter_nicht_verstanden
+      - action: utter_ask_rephrase
       - intent: nlu_fallback
       - slot_was_set:
           - language: __other__
-      - action: utter_default
-      - action: action_restart
-
-  - story: nicht verstanden fallback (neutral & positive sentiment)
-    steps:
-      - intent: nlu_fallback
-      - slot_was_set:
-          - sentiment: __other__
-      - action: utter_nicht_verstanden
-      - intent: nlu_fallback
-      - slot_was_set:
-          - sentiment: __other__
-      - action: utter_default
+      - action: utter_wrong_language
       - action: action_restart
 
   - story: nicht verstanden fallback (negative sentiment)
@@ -42,8 +30,8 @@ stories:
       - intent: nlu_fallback
       - slot_was_set:
           - sentiment: negative
+      - action: utter_ask_rephrase
       - intent: nlu_fallback
       - slot_was_set:
           - sentiment: negative
-      - action: utter_default
-      - action: action_restart
+      - action: utter_bad_sentiment
