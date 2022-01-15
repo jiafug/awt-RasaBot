@@ -1,23 +1,11 @@
 // https://github.com/botui/botui
 // start rasa with the following cmd: rasa run --enable-api --auth-token pass --cors "*"
 
-function generateId(length) {
-  var result = "";
-  var characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  console.log("ID: " + result)
-  return result;
-}
-
-const rasaServer = "http://localhost:5005/webhooks/rest/webhook?token=pass";
-const id = generateId(8);
+var botui = new BotUI("app"); // id of container
+const socket = io("http://localhost:5005");
 
 function init() {
-  var botui = new BotUI("app"); // id of container
+  receiveMsg();
   botui.message
     .bot({
       delay: 200,
@@ -33,62 +21,72 @@ function init() {
     })
     .then(function () {
       let prom = new Promise((res, rej) => {
-        res(showTextField(botui));
+        res(showTextField());
       });
       return prom;
     });
 }
 
-function showTextField(botui) {
+function showTextField() {
   botui.action
     .text({
       delay: 1000,
-      cssClass: "custom-class",
-      autoHide: true,
+      autoHide: false,
       action: {
         placeholder: "Hier Text eingeben...",
       },
     })
     .then(function (txt) {
-      let prom = new Promise((res, rej) => {
-        response = getResponse(txt.value);
-        res(response);
-      });
-      return prom;
-    })
-    .then(function (res) {
-      botui.message.bot({
-        delay: 1000,
-        loading: true,
-        content: res,
-      });
-    })
-    .then(function () {
-      let prom = new Promise((res, rej) => {
-        res(showTextField(botui));
-      });
-      return prom;
+      sendMsg(txt.value);
     });
 }
 
-async function getResponse(msg) {
-  var msg = {
-    sender: id,
+async function sendMsg(msg) {
+  socket.emit("user_uttered", {
     message: msg,
-  };
-  const response = await fetch(rasaServer, {
-    method: "POST",
-    body: JSON.stringify(msg),
-    headers: {
-      "Content-Type": "application/json",
-    },
   });
-  const data = await response.json();
-  try {
-    return data[0]["text"];
-  } catch {
-    return "Tut mir leid, da habe ich etwas nicht verstanden. Könntest du es umformulieren?";
-  }
+}
+
+function receiveMsg() {
+  socket.on("bot_uttered", function (response) {
+    console.log(response);
+    if (response.text) {
+      botui.message.bot({
+        delay: 1000,
+        loading: true,
+        content: response.text,
+      });
+    }
+    handleButtons();
+  });
+}
+
+function handleButtons() {
+  botui.action
+    .button({
+      action: [
+        {
+          text: "Wohnung anmelden",
+          value: "button",
+        },
+        {
+          text: "Etwas anderes",
+          value: "text",
+        },
+      ],
+    })
+    .then(function (res) {
+      // will be called when a button is clicked.
+      if (res.value === "button") {
+        sendMsg(res.text);
+      }
+    })
+    .then(function (res) {
+      let prom = new Promise((res, rej) => {
+        res(showTextField());
+      });
+      return prom;
+    });
 }
 
 init();

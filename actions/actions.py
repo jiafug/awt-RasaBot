@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Text
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import ActionExecuted, EventType, SessionStarted, SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+import time
 
 
 class ActionHelloWorld(Action):
@@ -20,7 +21,15 @@ class ActionHelloWorld(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hello World")
+        buttons = [{
+            "title": "Button 1",
+            "payload": "/goodbye"
+        }, {
+            "title": "Button 2",
+            "payload": "/goodbye"
+        }]
+        dispatcher.utter_button_message("Here are two buttons:", buttons)
+
         return []
 
 
@@ -51,7 +60,7 @@ class ActionHumanFallback(Action):
 
         # an `action_listen` should be added at the end as a user message follows
         #events.append(ActionExecuted("action_listen"))
-        
+
         dispatcher.utter_message(text="Hello World!" + str(tracker.slots))
 
         return []
