@@ -1,11 +1,15 @@
 // https://github.com/botui/botui
-// start rasa with the following cmd: rasa run --enable-api --auth-token pass --cors "*"
 
 var botui = new BotUI("app"); // id of container
 const socket = io("http://localhost:5005");
 
+/**
+ * Called upon loading the webpage and greets the user.
+ */
 function init() {
+  // websocket init to receive messages
   receiveMsg();
+  // show greeting messages to user
   botui.message
     .bot({
       delay: 200,
@@ -27,6 +31,9 @@ function init() {
     });
 }
 
+/**
+ * Shows a text input field to the user.
+ */
 function showTextField() {
   botui.action
     .text({
@@ -41,12 +48,21 @@ function showTextField() {
     });
 }
 
+/**
+ * Sends a message to the rasa server through a websocket channel.
+ * @param {*} msg
+ */
 async function sendMsg(msg) {
+  console.log("msg sent: " + msg);
   socket.emit("user_uttered", {
     message: msg,
   });
 }
 
+/**
+ * The functions registers the receive channel of the websocket connection
+ * to the rasa server backend.
+ */
 function receiveMsg() {
   socket.on("bot_uttered", function (response) {
     console.log(response);
@@ -57,29 +73,33 @@ function receiveMsg() {
         content: response.text,
       });
     }
-    handleButtons();
+    if (response.quick_replies) {
+      handleButtons(response);
+    }
   });
 }
 
-function handleButtons() {
+/**
+ * This function handles button responses by the rasa server.
+ * @param {*} response
+ */
+function handleButtons(response) {
+  buttons = [];
+  for (let i = 0; i < response.quick_replies.length; i++) {
+    title = response.quick_replies[i]["title"];
+    payload = response.quick_replies[i]["title"];
+    msg = {
+      text: title,
+      value: payload,
+    };
+    buttons.push(msg);
+  }
   botui.action
     .button({
-      action: [
-        {
-          text: "Wohnung anmelden",
-          value: "button",
-        },
-        {
-          text: "Etwas anderes",
-          value: "text",
-        },
-      ],
+      action: buttons,
     })
     .then(function (res) {
-      // will be called when a button is clicked.
-      if (res.value === "button") {
-        sendMsg(res.text);
-      }
+      sendMsg(res.value);
     })
     .then(function (res) {
       let prom = new Promise((res, rej) => {
