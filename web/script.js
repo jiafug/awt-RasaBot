@@ -22,29 +22,6 @@ function init() {
         content:
           "Ich kann dir bei verschiedensten Angelegenheiten rund ums Bürgeramt helfen. Frag mich einfach etwas.",
       });
-    })
-    .then(function () {
-      let prom = new Promise((res, rej) => {
-        res(showTextField());
-      });
-      return prom;
-    });
-}
-
-/**
- * Shows a text input field to the user.
- */
-function showTextField() {
-  botui.action
-    .text({
-      delay: 1000,
-      autoHide: false,
-      action: {
-        placeholder: "Hier Text eingeben...",
-      },
-    })
-    .then(function (txt) {
-      sendMsg(txt.value);
     });
 }
 
@@ -100,12 +77,6 @@ function handleButtons(response) {
     })
     .then(function (res) {
       sendMsg(res.value);
-    })
-    .then(function (res) {
-      let prom = new Promise((res, rej) => {
-        res(showTextField());
-      });
-      return prom;
     });
 }
 
@@ -117,9 +88,9 @@ function showTextInput() {
   div.innerHTML = `
     <div class="text-input-container">
       <div class="text-input-inner">
-        <form class="">
-          <input placeholder="Hier Text eingeben..." required="required" class="text-input-inner-field"> 
-          <button type="submit" class="text-input-inner-submit">
+        <form onsubmit="sendUserText();return false" class="">
+          <input placeholder="Hier Text eingeben..." required="required" class="text-input-inner-field" id="user"> 
+          <button type="button" class="text-input-inner-submit" onclick="sendUserText()">
             <img src="./senden.png" width="14" height="14">
           </button>
         </form>
@@ -128,6 +99,16 @@ function showTextInput() {
   `;
 
   document.getElementById("main-container").appendChild(div);
+}
+
+function sendUserText() {
+  text = document.getElementById("user").value;
+  botui.message.add({
+    human: true,
+    content: text,
+  });
+  sendMsg(text);
+  document.getElementById("user").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
