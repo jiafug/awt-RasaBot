@@ -1,10 +1,8 @@
-.botui-actions-text-input {
-  margin: 0;
-  padding: 8px 0px;
-  width: 100%;
-}
-
-.botui-container {
+#main-container {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
   padding: 12px;
   background: #fdfdfd;
   border: 1px solid #919292;
@@ -16,4 +14,82 @@
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 0 4px;
   -moz-box-shadow: rgba(0, 0, 0, 0.8) 0 0 4px;
   box-shadow: rgba(0, 0, 0, 0.8) 0 0 4px;
+}
+
+.botui-actions-text-input {
+  margin: 0;
+  padding: 8px 0px;
+  width: 100%;
+}
+
+.botui-container {
+  height: 90%;
+}
+
+.text-outer-wrapper {
+  padding: 12px 0;
+  margin: 0 5%;
+  background-color: #fdfdfd;
+  height: 10%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+}
+
+.text-input-container {
+  height: 100%;
+}
+
+.text-input-inner {
+  padding: 0px 12px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-input-inner-field {
+  width: 80%;
+  padding: 12px 12px;
+  margin: 0;
+  border-width: 0;
+  outline: none;
+  /* border-radius */
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 0 2px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+}
+
+.text-input-inner-submit {
+  display: flex;
+  align-items: center;
+  max-width: 20%;
+  padding: 12px 12px;
+  float: right;
+  transition-duration: 0.4s;
+
+  border-width: 0;
+  /* border-radius */
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 0 2px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 2px;
+}
+
+.text-input-inner-submit:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

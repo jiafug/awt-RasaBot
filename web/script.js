@@ -109,4 +109,29 @@ function handleButtons(response) {
     });
 }
 
-init();
+function showTextInput() {
+  const div = document.createElement("div");
+
+  div.className = "text-outer-wrapper";
+
+  div.innerHTML = `
+    <div class="text-input-container">
+      <div class="text-input-inner">
+        <form class="">
+          <input placeholder="Hier Text eingeben..." required="required" class="text-input-inner-field"> 
+          <button type="submit" class="text-input-inner-submit">
+            <img src="./senden.png" width="14" height="14">
+          </button>
+        </form>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("main-container").appendChild(div);
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  // bot init
+  init();
+  showTextInput();
+});
