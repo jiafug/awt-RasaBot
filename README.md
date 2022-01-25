@@ -12,7 +12,7 @@ In a Python3 virtual environment run:
 pip3 install -r requirements.txt
 ```
 
-### Download pre-trained models for custom components
+### Download trained models for custom NLU components
 
 Download the following files and place them in the `/notebooks/models/` folder:
 
@@ -32,6 +32,12 @@ start Rasa actions server:
 python -m rasa_sdk.endpoint --actions actions
 ```
 
+start NLG server:
+
+```
+python nlg/server.py
+```
+
 start Rasa X:
 
 ```
@@ -46,6 +52,12 @@ start Rasa actions server:
 
 ```
 python -m rasa_sdk.endpoint --actions actions
+```
+
+start NLG server:
+
+```
+python nlg/server.py
 ```
 
 start Rasa server:
@@ -64,7 +76,7 @@ open simple web GUI located in the following location:
 
 - `/actions/actions.py` - contains custom action/api code
 - `/components/*` - contains custom NLU components (i.e. sentiment analysis & language detection)
-- `/data/core/*` -  contains rules and stories training data
+- `/data/core/*` - contains rules and stories training data
 - `/data/nlu/*` - contains NLU training data
 - `/notebooks/*` - contains standalone prototype code as jupyter notebooks
 - `/notebooks/models/*` - contains models for custom NLU components

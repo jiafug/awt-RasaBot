@@ -2,11 +2,12 @@
 .rasa
 .vscode
 actions/__pycache__/
-components/__pycache__
+components/__pycache__/
 events.db
 events.db-shm
 events.db-wal
 models/
+nlg/__pycache__/
 rasa.db
 rasa.db-shm
 rasa.db-wal
