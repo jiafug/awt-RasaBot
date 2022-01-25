@@ -5,6 +5,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import yaml
 
+from doc_store import DocumentStore
+
 script_dir = os.path.dirname(__file__)  # <--- absolute dir the script is in
 domain = os.path.join(script_dir, "../domain.yml")  # <--- rasa domain file
 hostName = "localhost"
@@ -18,15 +20,8 @@ class NLGServer(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        if self.path == '/nlg':
-            self._set_response()
-            self.wfile.write(
-                bytes(
-                    "<html><head><title>https://pythonbasics.org</title></head>",
-                    "utf-8"))
-        else:
-            self.send_error(404, "not found",
-                            "please use the './nlg' endpoint")
+        self.send_error(405, "Method Not Allowed",
+                        "Only HTTP POST is supported")
 
     def do_POST(self):
         if self.path == '/nlg':
@@ -48,8 +43,7 @@ class NLGServer(BaseHTTPRequestHandler):
             # write response
             self.wfile.write(bytes(json.dumps(response), 'utf-8'))
         else:
-            self.send_error(404, "not found",
-                            "please use the './nlg' endpoint")
+            self.send_error(404, "Not Found", "Please use the '/nlg' endpoint")
 
     @staticmethod
     def parse_rasa_request(data):
