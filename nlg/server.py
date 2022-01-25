@@ -15,15 +15,18 @@ serverPort = 5054
 
 class NLGServer(BaseHTTPRequestHandler):
     def _set_response(self):
+        """Sets the responds header."""
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
 
     def do_GET(self):
+        """Sends info that only POST is supported."""
         self.send_error(405, "Method Not Allowed",
                         "Only HTTP POST is supported")
 
     def do_POST(self):
+        """Main handler where requests are received and responses are created."""
         if self.path == '/nlg':
             self._set_response()
             # length of request
@@ -47,6 +50,14 @@ class NLGServer(BaseHTTPRequestHandler):
 
     @staticmethod
     def parse_rasa_request(data):
+        """Parses the request body provied by Rasa core.
+
+        Args:
+            data (str): rasa request body
+
+        Returns:
+            str: identifier of action to be taken
+        """
         request = json.loads(data)
         action = request['response']
         events = request['tracker']['events']
@@ -54,6 +65,14 @@ class NLGServer(BaseHTTPRequestHandler):
 
     @staticmethod
     def get_static_bot_response(action):
+        """Resturns a randomized static response which was defined in the Rasa domain.
+
+        Args:
+            action (str): action identifier
+
+        Returns:
+            str: static response
+        """
         with open(domain, 'r') as stream:
             data_loaded = yaml.safe_load(stream)
             # get a list of all responses for a specific action
@@ -64,6 +83,14 @@ class NLGServer(BaseHTTPRequestHandler):
 
     @staticmethod
     def create_rasa_response(response_txt):
+        """Builds a JSON object to be returned to Rasa core.
+
+        Args:
+            response_txt (str): response
+
+        Returns:
+            dict: dict object
+        """
         json_response = {
             "text": response_txt,
             "buttons": [],
@@ -76,6 +103,7 @@ class NLGServer(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    """Starts the NLG server."""
     webServer = HTTPServer((hostName, serverPort), NLGServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
     try:
