@@ -67,7 +67,6 @@ class NLGServer(BaseHTTPRequestHandler):
         for event in events:
             if event['event'] == 'user':
                 usr_intent = event['parse_data']['intent']['name']
-                print(usr_intent)
                 if 'topic' in usr_intent:
                     topic = usr_intent.replace('topic_', '')
         print('topic: ', topic, ' action: ', action, ' last_message: ',
