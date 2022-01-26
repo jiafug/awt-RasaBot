@@ -61,8 +61,18 @@ class NLGServer(BaseHTTPRequestHandler):
         """
         request = json.loads(data)
         action = request['response']
+        last_message = request['tracker']['latest_message']['text']
         events = request['tracker']['events']
-        return "", action
+        topic = None
+        for event in events:
+            if event['event'] == 'user':
+                usr_intent = event['parse_data']['intent']['name']
+                print(usr_intent)
+                if 'topic' in usr_intent:
+                    topic = usr_intent.replace('topic_', '')
+        print('topic: ', topic, ' action: ', action, ' last_message: ',
+              last_message)
+        return topic, last_message, action
 
     @staticmethod
     def get_static_bot_response(action):

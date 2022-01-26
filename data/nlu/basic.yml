@@ -380,3 +380,24 @@ nlu:
       - Sie können mir helfen
       - Was können Sie mir beibringen?
       - Was können Sie
+  - intent: faq
+    examples: |
+      - Bis wann muss ich meine Wohnung anmelden?
+      - Warum muss ich meine Wohnung anmelden?
+      - Was erhalt ich nach der Anmeldung?
+      - Muss ich mich anmelden wenn ich nicht länger als 6 Monate in Berlin bleibe
+      - Welche Voraussetzung müssen erfüllt sein?
+      - Muss ich meine Wohnung abmelden wenn ich ich ins Ausland ziehe?
+      - Wann muss ich eine Wohnung abmelden?
+      - Was muss ich machen wenn ich ins Ausland ziehen will?
+      - Was muss ich machen bei befristete Auslandsaufenthalten?
+      - Muss ich mich abmelden wenn innerhalb von Deutschland umziehe
+      - Wer braucht eine Meldebescheinigung?
+      - Was steht in der Meldebescheinigung?
+      - Muss ich mich noch ummelden?
+      - Kann ich die Meldebescheinigung als Lebensbescheinigung verwenden?
+      - Was macht man mit dem Führungszeugnis?
+      - Welche Arten von Führungszeugnissen gibt es?
+      - Wer erstellt das Führungszeugnis?
+      - Bekomme ich ein Führungszeugnis wenn ich aus einem EU-Staat bin?
+      - Bekommet man das Führungszeugnis per Post?

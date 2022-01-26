@@ -14,8 +14,8 @@ intents:
 - mood_unhappy
 - nlu_fallback
 - verabschieden
-- wohnung_abmelden
-- wohnung_anmelden
+- topic_wohnung_abmelden
+- topic_wohnung_anmelden
 entities:
 - language
 - sentiment
@@ -49,6 +49,9 @@ responses:
   - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
   utter_default:
   - text: Es tut mir leid, ich kann dir nicht helfen.
+  utter_qa:
+  - text: None
+  
 actions:
 - action_trigger_human_fallback
 - action_hello_world
