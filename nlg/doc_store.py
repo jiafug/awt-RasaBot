@@ -80,8 +80,8 @@ class DocumentStore:
         Returns:
             str: paragraph where the answer is marked
         """
-        html_start = '<b>'
-        html_end = '</b>'
+        html_start = '<span class="hl"><b>'
+        html_end = '</b></span>'
         try:
             idx = paragraph.index(answer)
             end_idx = idx + len(answer)
@@ -91,6 +91,7 @@ class DocumentStore:
             end_idx = idx + len(answer) + 2
         response = paragraph[:idx] + html_start + paragraph[
             idx:end_idx] + html_end + paragraph[end_idx:]
+        response = response.replace('\n', '<br>')
         return response
 
 
