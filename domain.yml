@@ -51,7 +51,7 @@ responses:
   utter_default:
   - text: Es tut mir leid, ich kann dir nicht helfen.
   utter_qa:
-  - text: None
+  - text: Tut mir leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
   
 actions:
 - action_trigger_human_fallback

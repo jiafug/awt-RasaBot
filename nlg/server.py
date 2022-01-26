@@ -36,7 +36,7 @@ class NLGServer(BaseHTTPRequestHandler):
             post_data = self.rfile.read(content_length).decode("utf-8")
             # get current topic
             topic, question, action = NLGServer.parse_rasa_request(post_data)
-            if "qa" in action:
+            if "qa" in action and topic != None:
                 # q&a response from document store
                 response_txt = doc_store.get_answer(question, topic)
             else:
