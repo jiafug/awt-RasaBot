@@ -11,6 +11,7 @@ script_dir = os.path.dirname(__file__)  # <--- absolute dir the script is in
 domain = os.path.join(script_dir, "../domain.yml")  # <--- rasa domain file
 hostName = "localhost"
 serverPort = 5054
+doc_store = None
 
 
 class NLGServer(BaseHTTPRequestHandler):
@@ -34,10 +35,10 @@ class NLGServer(BaseHTTPRequestHandler):
             # body of request
             post_data = self.rfile.read(content_length).decode("utf-8")
             # get current topic
-            topic, action = NLGServer.parse_rasa_request(post_data)
+            topic, question, action = NLGServer.parse_rasa_request(post_data)
             if "qa" in action:
                 # q&a response from document store
-                pass
+                response_txt = doc_store.get_answer(question, topic)
             else:
                 # get static response
                 response_txt = NLGServer.get_static_bot_response(action)
@@ -104,6 +105,8 @@ class NLGServer(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     """Starts the NLG server."""
+    print("Initialize Q&A transformer model...")
+    doc_store = DocumentStore()
     webServer = HTTPServer((hostName, serverPort), NLGServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
     try:

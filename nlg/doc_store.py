@@ -7,7 +7,7 @@ docs = os.path.join(script_dir, "./docs/")  # <--- documents directory
 
 
 class DocumentStore:
-    def init(self):
+    def __init__(self):
         """Initialize extractive question answering pipeline."""
         self.qa_pipeline = pipeline(
             "question-answering",
@@ -96,7 +96,6 @@ class DocumentStore:
 
 if __name__ == "__main__":
     ds = DocumentStore()
-    ds.init()
     while True:
         topic = "wohnung_anmelden"
         q = input("q: ")
