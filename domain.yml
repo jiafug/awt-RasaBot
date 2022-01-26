@@ -10,6 +10,7 @@ intents:
 - bot_challenge
 - bot_features
 - danken
+- faq
 - mood_great
 - mood_unhappy
 - nlu_fallback
@@ -56,4 +57,3 @@ actions:
 - action_trigger_human_fallback
 - action_hello_world
 - action_language_slot
-- action_two_stage_fallback
