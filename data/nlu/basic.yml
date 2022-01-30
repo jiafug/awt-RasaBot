@@ -380,6 +380,11 @@ nlu:
       - Sie können mir helfen
       - Was können Sie mir beibringen?
       - Was können Sie
+  - intent: book_appointment
+    examples: |
+      - Termin buchen
+      - Termin
+      - ich möchte einen Termin
   - intent: faq
     examples: |
       - Bis wann muss ich meine Wohnung anmelden?

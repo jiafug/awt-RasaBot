@@ -1,12 +1,27 @@
 version: "2.0"
 
 stories:
-  - story: wohnung anmelden
+  - story: Wohnung anmelden
     steps:
       - intent: topic_wohnung_anmelden
       - action: utter_wohung_anmelden
       - intent: bestaetigen
-      - action: action_listen
+      - action: utter_wohung_anmelden_basic
+      - action: utter_followup_question
+      - checkpoint: check_qa_start
+
+  - story: Q&A
+    steps:
+      - checkpoint: check_qa_start
+      - intent: faq
+      - action: utter_qa
+      - checkpoint: check_qa_end
+
+  - story: Termin buchen
+    steps:
+      - checkpoint: check_qa_end
+      - intent: book_appointment
+      - action: utter_book_appointment
 
   - story: wohnung abmelden
     steps:

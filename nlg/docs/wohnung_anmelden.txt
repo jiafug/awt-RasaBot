@@ -1,4 +1,3 @@
-Anmeldung einer Wohnung:
 Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn
 Sie innerhalb der Stadt in eine neue Wohnung umgezogen sind oder
 Sie aus einer anderen Gemeinde in Deutschland neu nach Berlin gezogen sind oder
@@ -6,7 +5,7 @@ Sie aus dem Ausland nach Berlin gezogen sind.
 Nach Ihrer Anmeldung erhalten Sie eine Meldebestätigung.
 
 Zuzug aus dem Ausland:
-Sollte es sich um einen Zuzug aus dem Ausland handeln, beachten Sie bitte entsprechende Quarantänevorschriften (unter "Weiterführende Informationen"). Die persönliche Vorsprache im Bürgeramt ist erst nach einer eventuellen Quarantäne möglich.
+Sollte es sich um einen Zuzug aus dem Ausland handeln, beachten Sie bitte entsprechende Quarantänevorschriften (unter 'Weiterführende Informationen'). Die persönliche Vorsprache im Bürgeramt ist erst nach einer eventuellen Quarantäne möglich.
 
 Ausnahme von der Meldefrist:
 Eine Ausnahme von dieser Meldefrist (14 Tage) besteht nur, wenn Sie mit einer Wohnung in Deutschland angemeldet sind und Ihr Aufenthalt in Berlin nicht länger als sechs Monate dauert.
@@ -15,30 +14,30 @@ Falls Sie sonst im Ausland wohnen, gilt eine Frist von drei Monaten. Wer nach Ab
 Umzug eines minderjährigen Kindes:
 Wenn künftig nicht mehr beide Sorgeberechtigten eine gemeinsame Wohnung mit dem Kind haben oder die alleinige Wohnung bzw. Hauptwohnung des Kindes von einem Sorgeberechtigten zum anderen wechselt, ist von den Sorgeberechtigten eine Einverständniserklärung abzugeben. Ein Muster für die Erklärung finden Sie im Abschnitt „Formulare“.
 
-Voraussetzungen:
-Persönliches Erscheinen (Vertretung möglich):
-Sie können sich nur vor Ort anmelden oder sich durch eine andere Person vor Ort vertreten lassen. Dafür müssen Sie der anderen Person eine Vollmacht und das ausgefüllte Anmelde-Formular mitgeben. Dieses Formular müssen Sie selbst unterschreiben. Das Anmelde-Formular finden Sie im Abschnitt „Formulare“.
+Voraussetzungen sind:
+- Persönliches Erscheinen, eine Vertretung ist möglich
+(Sie können sich nur vor Ort anmelden oder sich durch eine andere Person vor Ort vertreten lassen. Dafür müssen Sie der anderen Person eine Vollmacht und das ausgefüllte Anmelde-Formular mitgeben. Dieses Formular müssen Sie selbst unterschreiben. Das Anmelde-Formular finden Sie im Abschnitt 'Formulare'.)
 
-Erforderliche Unterlagen:
-Identitätsnachweis:
-Personalausweis, Reisepass, Kinderreisepass für deutsche Staatsangehörige oder Nationalpass oder Passersatzpapiere für ausländische Staatsangehörige.
-Bitte bringen Sie alle genannten und Ihnen vorliegenden Dokumente für alle umziehenden Personen mit.
-Beiblatt zur Anmeldung/Hauptwohnungserklärung (bei mehreren Wohnungen):
-Nur wenn Sie Ihre bisherige Wohnung in Deutschland nicht aufgeben und die neue Wohnung zusätzlich anmelden wollen, muss für Sie und Ihre ggf. mitziehenden Familienmitglieder eine Wohnung als Hauptwohnung bestimmt werden.
-Anmeldeformular:
-Personen einer Familie, die aus der bisherigen Wohnung zusammen in die neue Wohnung ziehen, können gemeinsam ein Anmeldeformular benutzen.
+Erforderliche Unterlagen sind:
+- Identitätsnachweis
+(Personalausweis, Reisepass, Kinderreisepass für deutsche Staatsangehörige oder Nationalpass oder Passersatzpapiere für ausländische Staatsangehörige.
+Bitte bringen Sie alle genannten und Ihnen vorliegenden Dokumente für alle umziehenden Personen mit.)
+- Beiblatt zur Anmeldung/Hauptwohnungserklärung bei mehreren Wohnungen
+(Nur wenn Sie Ihre bisherige Wohnung in Deutschland nicht aufgeben und die neue Wohnung zusätzlich anmelden wollen, muss für Sie und Ihre ggf. mitziehenden Familienmitglieder eine Wohnung als Hauptwohnung bestimmt werden.)
+- Anmeldeformular
+(Personen einer Familie, die aus der bisherigen Wohnung zusammen in die neue Wohnung ziehen, können gemeinsam ein Anmeldeformular benutzen.
 Bei mehr als 2 anzumeldenden Personen bitte weiteren Meldeschein benutzen.
-Bitte beachten Sie im Bereich "Weiterführende Informationen" die "Weiterführenden Hinweise zu Anmeldungen" .
-Personenstandsurkunde:
-Für Ihre erste Anmeldung in Berlin ist es ggf. zusätzlich erforderlich, Personenstandsurkunden (wie z.B.: Heirats-, Geburtsurkunde) vorzulegen.
-Bereits vorhandene Urkunden sollten daher vorsorglich mitgebracht werden.
-Einzugsbestätigung des Wohnungsgebers/Vermieter:
-Seit dem 1. November 2015 ist der Wohnungsgeber verpflichtet, dem Meldepflichtigen den Einzug innerhalb von zwei Wochen nach dem Einzug schriftlich mit Unterschrift zu bestätigen. Die Bestätigung muss folgende Daten enthalten: Name und Anschrift des Wohnungsgebers und wenn dieser nicht Eigentümer ist, auch den Namen des Eigentümers, Einzugsdatum, Anschrift der Wohnung und Namen der meldepflichtigen Personen. Die Vorlage eines Mietvertrages ersetzt nicht die Einzugsbestätigung.
-Ein Muster für die Einzugsbestätigung des Wohnungsgebers steht Ihnen unter "Formulare" zur Verfügung.
-ggf. die Einverständniserklärung des abwesenden Sorgeberechtigten und dessen Pass oder Personalausweis
-Ein Muster für die Einverständniserklärung der Sorgeberechtigten steht Ihnen unter "Formulare" zur Verfügung.
+Bitte beachten Sie im Bereich 'Weiterführende Informationen' die 'Weiterführenden Hinweise zu Anmeldungen'.)
+- Personenstandsurkunde
+(Für Ihre erste Anmeldung in Berlin ist es ggf. zusätzlich erforderlich, Personenstandsurkunden (wie z.B.: Heirats-, Geburtsurkunde) vorzulegen.
+Bereits vorhandene Urkunden sollten daher vorsorglich mitgebracht werden.)
+- Einzugsbestätigung des Wohnungsgebers/Vermieter
+(Seit dem 1. November 2015 ist der Wohnungsgeber verpflichtet, dem Meldepflichtigen den Einzug innerhalb von zwei Wochen nach dem Einzug schriftlich mit Unterschrift zu bestätigen. Die Bestätigung muss folgende Daten enthalten: Name und Anschrift des Wohnungsgebers und wenn dieser nicht Eigentümer ist, auch den Namen des Eigentümers, Einzugsdatum, Anschrift der Wohnung und Namen der meldepflichtigen Personen. Die Vorlage eines Mietvertrages ersetzt nicht die Einzugsbestätigung.
+Ein Muster für die Einzugsbestätigung des Wohnungsgebers steht Ihnen unter 'Formulare' zur Verfügung.)
+- ggf. die Einverständniserklärung des abwesenden Sorgeberechtigten und dessen Pass oder Personalausweis
+(Ein Muster für die Einverständniserklärung der Sorgeberechtigten steht Ihnen unter 'Formulare' zur Verfügung.)
 
-Formulare:
+Formulare sie eventuell benötigen:
 Anmeldeformular,
 Beiblatt zur Anmeldung/Hauptwohnungserklärung,
 Einzugsbestätigung des Wohnungsgebers/Vermieter (Muster),

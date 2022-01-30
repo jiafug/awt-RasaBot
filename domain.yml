@@ -1,59 +1,72 @@
-version: '2.0'
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- ablehnen
-- begruessen
-- bestaetigen
-- bestaetigena
-- bot_challenge
-- bot_features
-- danken
-- faq
-- mood_great
-- mood_unhappy
-- nlu_fallback
-- verabschieden
-- topic_wohnung_abmelden
-- topic_wohnung_anmelden
+  - ablehnen
+  - begruessen
+  - bestaetigen
+  - bestaetigena
+  - bot_challenge
+  - bot_features
+  - danken
+  - faq
+  - mood_great
+  - mood_unhappy
+  - nlu_fallback
+  - verabschieden
+  - topic_wohnung_abmelden
+  - topic_wohnung_anmelden
+  - book_appointment
 entities:
-- language
-- sentiment
+  - language
+  - sentiment
 slots:
   language:
     type: categorical
     influence_conversation: true
     values:
-    - deu
+      - deu
   sentiment:
     type: categorical
     influence_conversation: true
     values:
-    - negative
+      - negative
 responses:
   utter_gruessen:
-  - text: Hallo, wie kann ich Ihnen behilflich sein?
+    - text: Hallo, wie kann ich Ihnen behilflich sein?
   utter_verabschieden:
-  - text: Auf wiedersehen!
+    - text: Auf wiedersehen!
   utter_wohung_anmelden:
-  - text: Möchten Sie sich anmelden?
+    - text: Möchten Sie über die Dienstleistung "Anmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
   utter_wohung_abmelden:
-  - text: Möchten Sie sich abmelden?
+    - text: Möchten Sie über die Dienstleistung "Abmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
   utter_ask_rephrase:
-  - text: Tut mir leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
+    - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
   utter_bad_sentiment:
-  - text: Tut mir leid, dass habe ich immer noch nicht verstanden. Möchtest du mit einem Menschen sprechen?
+    - text: Tut mir leid, dass habe ich immer noch nicht verstanden. Möchten Sie mit einem Menschen sprechen?
   utter_iamabot:
-  - text: Ich bin ein Bot.
+    - text: Ich bin ein Bot.
   utter_wrong_language:
-  - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
+    - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
   utter_default:
-  - text: Es tut mir leid, ich kann dir nicht helfen.
+    - text: Es tut mir leid, ich kann Ihnen nicht helfen.
   utter_qa:
-  - text: Tut mir leid, ich habe dich nicht verstanden. Könntst du es anders formulieren?
-  
+    - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
+  utter_wohung_anmelden_basic:
+    - text: |
+        Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn<br>
+        - Sie innerhalb der Stadt in eine neue Wohnung umgezogen sind oder<br>
+        - Sie aus einer anderen Gemeinde in Deutschland neu nach Berlin gezogen sind oder<br>
+        - Sie aus dem Ausland nach Berlin gezogen sind.<br>
+        Nach Ihrer Anmeldung erhalten Sie eine Meldebestätigung.
+  utter_followup_question:
+    - text: |
+        Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
+        Oder wollen Sie hierfür einen Termin buchen?
+  utter_book_appointment:
+    - text: Wollen Sie einen Termin für diese Dienstleistung buchen?
 actions:
-- action_trigger_human_fallback
-- action_hello_world
-- action_language_slot
+  - action_trigger_human_fallback
+  - action_hello_world
+  - action_language_slot

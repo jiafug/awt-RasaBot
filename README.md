@@ -63,7 +63,7 @@ python nlg/server.py
 start Rasa server:
 
 ```
-rasa run --enable-api --auth-token pass --cors "*"
+rasa run --cors "*"
 ```
 
 open simple web GUI located in the following location:
