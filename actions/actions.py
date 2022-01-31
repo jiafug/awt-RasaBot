@@ -39,6 +39,7 @@ class ActionSetTopic(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # [short-name]: [long-name] mapping
         # dictionary of topics with their short and full name
         dict_topics = {
             "wohnung_anmelden": "Anmeldung einer Wohnung",
