@@ -94,12 +94,26 @@ responses:
         - Sie aus einer anderen Gemeinde in Deutschland neu nach Berlin gezogen sind oder<br>
         - Sie aus dem Ausland nach Berlin gezogen sind.<br>
         Nach Ihrer Anmeldung erhalten Sie eine Meldebestätigung.
+  utter_wohnung_abmelden_basic:
+    - text: |
+        Sie geben eine Berliner Wohnung auf, weil Sie in das Ausland verziehen<br>
+        oder<br>
+        Sie geben eine von mehreren Wohnungen in Deutschland auf, für die Sie angemeldet sind und die Berliner Wohnung bleibt bestehen<br>
+        oder<br>
+        Sie geben eine von mehreren Berliner Wohnungen auf, für die Sie angemeldet sind<br>
+        <br>
+        Sie müssen sich bei der Meldebehörde in Berlin nur bei einem Wegzug ins Ausland abmelden oder bei der Aufgabe einer Haupt- oder Nebenwohnung, ohne dass Sie in eine andere Wohnung im Inland einziehen.<br>
+        Beim Wegzug in das Ausland gilt, dass Sie aus dieser Wohnung ausziehen und dort zukünftig nicht wieder wohnen werden - befristete Auslandsaufenthalte, z.B. zu Studienzwecken bedingen keine Abmeldung.<br>
+        Die Abmeldung kann im Zeitraum von 7 Tagen vor, muss aber bis 14 Tage nach dem Auszug vorgenommen werden. Sie erhalten eine Abmeldebestätigung.<br>
   utter_followup_question:
     - text: |
         Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
         Oder wollen Sie hierfür einen Termin buchen?
   utter_book_appointment:
     - text: Wollen Sie einen Termin für diese Dienstleistung buchen?
+  utter_restart:
+    - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
+
 actions:
   - action_hello_world
 forms:

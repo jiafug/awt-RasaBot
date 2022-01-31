@@ -6,17 +6,37 @@ stories:
     steps:
       - intent: topic_wohnung_anmelden
       - action: utter_wohnung_anmelden
-      - intent: bestaetigen
+      - or:
+          - intent: bestaetigen
+          - intent: danken
       - action: utter_wohnung_anmelden_basic
       - action: utter_followup_question
       - checkpoint: check_topic
+
+  - story: Wohnung anmelden ablehnen
+    steps:
+      - intent: topic_wohnung_anmelden
+      - action: utter_wohnung_anmelden
+      - intent: ablehnen
+      - action: action_restart
 
   - story: Wohnung abmelden
     steps:
       - intent: topic_wohnung_abmelden
       - action: utter_wohnung_abmelden
-      - intent: bestaetigen
-      - action: action_listen
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: utter_wohnung_abmelden_basic
+      - action: utter_followup_question
+      - checkpoint: check_topic
+
+  - story: Wohnung abmelden ablehnen
+    steps:
+      - intent: topic_wohnung_abmelden
+      - action: utter_wohnung_abmelden
+      - intent: ablehnen
+      - action: action_restart
 
   # general
   - story: Q&A
@@ -24,6 +44,7 @@ stories:
       - checkpoint: check_topic
       - intent: faq
       - action: utter_qa
+      - action: utter_followup_question
       - checkpoint: check_qa
 
   - story: Termin buchen mit Q&A
@@ -31,7 +52,9 @@ stories:
       - checkpoint: check_qa
       - intent: book_appointment
       - action: utter_book_appointment
-      - intent: bestaetigen
+      - or:
+          - intent: bestaetigen
+          - intent: danken
       - action: booking_form_1
       - active_loop: booking_form_1
       - active_loop: null
@@ -45,7 +68,9 @@ stories:
       - checkpoint: check_topic
       - intent: book_appointment
       - action: utter_book_appointment
-      - intent: bestaetigen
+      - or:
+          - intent: bestaetigen
+          - intent: danken
       - action: booking_form_1
       - active_loop: booking_form_1
       - active_loop: null
