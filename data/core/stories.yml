@@ -1,32 +1,48 @@
 version: "2.0"
 
 stories:
-  - story: Wohnung anmelden
+  - story: Wohnung anmelden mit Q&A
     steps:
       - intent: topic_wohnung_anmelden
-      - action: utter_wohung_anmelden
+      - action: utter_wohnung_anmelden
       - intent: bestaetigen
-      - action: utter_wohung_anmelden_basic
+      - action: utter_wohnung_anmelden_basic
       - action: utter_followup_question
-      - checkpoint: check_qa_start
-
-  - story: Q&A
-    steps:
-      - checkpoint: check_qa_start
       - intent: faq
       - action: utter_qa
-      - checkpoint: check_qa_end
-
-  - story: Termin buchen
-    steps:
-      - checkpoint: check_qa_end
       - intent: book_appointment
       - action: utter_book_appointment
+      - intent: bestaetigen
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: booking_form_2
+      - active_loop: booking_form_2
+      - active_loop: null
+      - action: utter_submit
+
+  - story: Wohnung anmelden ohne Q&A
+    steps:
+      - intent: topic_wohnung_anmelden
+      - action: utter_wohnung_anmelden
+      - intent: bestaetigen
+      - action: utter_wohnung_anmelden_basic
+      - action: utter_followup_question
+      - intent: book_appointment
+      - action: utter_book_appointment
+      - intent: bestaetigen
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: booking_form_2
+      - active_loop: booking_form_2
+      - active_loop: null
+      - action: utter_submit
 
   - story: wohnung abmelden
     steps:
       - intent: topic_wohnung_abmelden
-      - action: utter_wohung_abmelden
+      - action: utter_wohnung_abmelden
       - intent: bestaetigen
       - action: action_listen
 
@@ -40,7 +56,6 @@ stories:
       - slot_was_set:
           - language: __other__
       - action: utter_wrong_language
-      - action: action_restart
 
   - story: nicht verstanden fallback (negative sentiment)
     steps:

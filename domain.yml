@@ -1,12 +1,15 @@
+# https://forum.rasa.com/t/visualize-training-metrics-in-tensorboard/26531
+
 version: "2.0"
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
 intents:
   - ablehnen
   - begruessen
   - bestaetigen
   - bestaetigena
+  - book_appointment
   - bot_challenge
   - bot_features
   - danken
@@ -14,13 +17,16 @@ intents:
   - mood_great
   - mood_unhappy
   - nlu_fallback
-  - verabschieden
+  - place
+  - time
   - topic_wohnung_abmelden
   - topic_wohnung_anmelden
-  - book_appointment
+  - verabschieden
 entities:
   - language
   - sentiment
+  - place
+  - time
 slots:
   language:
     type: categorical
@@ -32,14 +38,29 @@ slots:
     influence_conversation: true
     values:
       - negative
+  place:
+    type: text
+    influence_conversation: false
+  time:
+    type: text
+    influence_conversation: false
+  name:
+    type: text
+    influence_conversation: false
+  phone:
+    type: text
+    influence_conversation: false
+  mail:
+    type: text
+    influence_conversation: false
 responses:
   utter_gruessen:
     - text: Hallo, wie kann ich Ihnen behilflich sein?
   utter_verabschieden:
     - text: Auf wiedersehen!
-  utter_wohung_anmelden:
+  utter_wohnung_anmelden:
     - text: Möchten Sie über die Dienstleistung "Anmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
-  utter_wohung_abmelden:
+  utter_wohnung_abmelden:
     - text: Möchten Sie über die Dienstleistung "Abmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
   utter_ask_rephrase:
     - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
@@ -53,7 +74,19 @@ responses:
     - text: Es tut mir leid, ich kann Ihnen nicht helfen.
   utter_qa:
     - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
-  utter_wohung_anmelden_basic:
+  utter_submit:
+    - text: Es wurde für Sie erfolgreich ein Termin gebucht.
+  utter_ask_place:
+    - text: Welcher Bezirk?
+  utter_ask_time:
+    - text: Zeit?
+  utter_ask_name:
+    - text: Vollständiger Name
+  utter_ask_phone:
+    - text: Telefonnummer
+  utter_ask_mail:
+    - text: E-Mail
+  utter_wohnung_anmelden_basic:
     - text: |
         Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn<br>
         - Sie innerhalb der Stadt in eine neue Wohnung umgezogen sind oder<br>
@@ -70,3 +103,20 @@ actions:
   - action_trigger_human_fallback
   - action_hello_world
   - action_language_slot
+forms:
+  booking_form_1:
+    required_slots:
+      place:
+        - type: from_entity
+          entity: place
+      time:
+        - type: from_entity
+          entity: time
+  booking_form_2:
+    required_slots:
+      name:
+        - type: from_text
+      phone:
+        - type: from_text
+      mail:
+        - type: from_text
