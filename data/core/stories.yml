@@ -1,51 +1,60 @@
 version: "2.0"
 
 stories:
-  - story: Wohnung anmelden mit Q&A
+  # topics
+  - story: Wohnung anmelden
     steps:
       - intent: topic_wohnung_anmelden
       - action: utter_wohnung_anmelden
       - intent: bestaetigen
       - action: utter_wohnung_anmelden_basic
       - action: utter_followup_question
-      - intent: faq
-      - action: utter_qa
-      - intent: book_appointment
-      - action: utter_book_appointment
-      - intent: bestaetigen
-      - action: booking_form_1
-      - active_loop: booking_form_1
-      - active_loop: null
-      - action: booking_form_2
-      - active_loop: booking_form_2
-      - active_loop: null
-      - action: utter_submit
+      - checkpoint: check_topic
 
-  - story: Wohnung anmelden ohne Q&A
-    steps:
-      - intent: topic_wohnung_anmelden
-      - action: utter_wohnung_anmelden
-      - intent: bestaetigen
-      - action: utter_wohnung_anmelden_basic
-      - action: utter_followup_question
-      - intent: book_appointment
-      - action: utter_book_appointment
-      - intent: bestaetigen
-      - action: booking_form_1
-      - active_loop: booking_form_1
-      - active_loop: null
-      - action: booking_form_2
-      - active_loop: booking_form_2
-      - active_loop: null
-      - action: utter_submit
-
-  - story: wohnung abmelden
+  - story: Wohnung abmelden
     steps:
       - intent: topic_wohnung_abmelden
       - action: utter_wohnung_abmelden
       - intent: bestaetigen
       - action: action_listen
 
+  # general
+  - story: Q&A
+    steps:
+      - checkpoint: check_topic
+      - intent: faq
+      - action: utter_qa
+      - checkpoint: check_qa
+
+  - story: Termin buchen mit Q&A
+    steps:
+      - checkpoint: check_qa
+      - intent: book_appointment
+      - action: utter_book_appointment
+      - intent: bestaetigen
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: booking_form_2
+      - active_loop: booking_form_2
+      - active_loop: null
+      - action: utter_submit
+
+  - story: Termin buchen ohne Q&A
+    steps:
+      - checkpoint: check_topic
+      - intent: book_appointment
+      - action: utter_book_appointment
+      - intent: bestaetigen
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: booking_form_2
+      - active_loop: booking_form_2
+      - active_loop: null
+      - action: utter_submit
+
+  # fallbacks
   - story: falsche sprache fallback
     steps:
       - intent: nlu_fallback

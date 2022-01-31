@@ -1,5 +1,4 @@
 # https://forum.rasa.com/t/visualize-training-metrics-in-tensorboard/26531
-
 version: "2.0"
 session_config:
   session_expiration_time: 60
@@ -22,6 +21,8 @@ intents:
   - topic_wohnung_abmelden
   - topic_wohnung_anmelden
   - verabschieden
+  - inform_time
+  - infrom_place
 entities:
   - language
   - sentiment
@@ -100,9 +101,7 @@ responses:
   utter_book_appointment:
     - text: Wollen Sie einen Termin für diese Dienstleistung buchen?
 actions:
-  - action_trigger_human_fallback
   - action_hello_world
-  - action_language_slot
 forms:
   booking_form_1:
     required_slots:
