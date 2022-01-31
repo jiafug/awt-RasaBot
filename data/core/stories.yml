@@ -9,6 +9,7 @@ stories:
       - or:
           - intent: bestaetigen
           - intent: danken
+      - action: action_set_topic
       - action: utter_wohnung_anmelden_basic
       - action: utter_followup_question
       - checkpoint: check_topic
@@ -27,6 +28,7 @@ stories:
       - or:
           - intent: bestaetigen
           - intent: danken
+      - action: action_set_topic
       - action: utter_wohnung_abmelden_basic
       - action: utter_followup_question
       - checkpoint: check_topic

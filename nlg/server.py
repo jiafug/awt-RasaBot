@@ -1,6 +1,8 @@
 import json
 import os
 import random
+import re
+from datetime import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import yaml
@@ -35,13 +37,14 @@ class NLGServer(BaseHTTPRequestHandler):
             # body of request
             post_data = self.rfile.read(content_length).decode("utf-8")
             # get current topic
-            topic, question, action = NLGServer.parse_rasa_request(post_data)
+            topic, question, action, slots = NLGServer.parse_rasa_request(
+                post_data)
             if "qa" in action and topic != None:
                 # q&a response from document store
                 response_txt = doc_store.get_answer(question, topic)
             else:
                 # get static response
-                response_txt = NLGServer.get_static_bot_response(action)
+                response_txt = NLGServer.get_static_bot_response(action, slots)
             # create rasa response
             response = NLGServer.create_rasa_response(response_txt)
             # write response
@@ -60,8 +63,11 @@ class NLGServer(BaseHTTPRequestHandler):
             str: identifier of action to be taken
         """
         request = json.loads(data)
+        # extract the next action
         action = request['response']
+        # extract last user message
         last_message = request['tracker']['latest_message']['text']
+        # extract last topic
         events = request['tracker']['events']
         topic = None
         for event in events:
@@ -69,12 +75,16 @@ class NLGServer(BaseHTTPRequestHandler):
                 usr_intent = event['parse_data']['intent']['name']
                 if 'topic' in usr_intent:
                     topic = usr_intent.replace('topic_', '')
-        print('topic: ', topic, ' action: ', action, ' last_message: ',
-              last_message)
-        return topic, last_message, action
+        # extract all slot
+        slots = request['tracker']['slots']
+        # logging
+        date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
+        print('[' + date_time + ']', ' topic: ', topic, ' action: ', action,
+              ' last_message: ', last_message, ' slots; ', slots)
+        return topic, last_message, action, slots
 
     @staticmethod
-    def get_static_bot_response(action):
+    def get_static_bot_response(action, slot):
         """Resturns a randomized static response which was defined in the Rasa domain.
 
         Args:
@@ -88,8 +98,15 @@ class NLGServer(BaseHTTPRequestHandler):
             # get a list of all responses for a specific action
             text_list = data_loaded['responses'][action]
             # pick a random respone
-            rand_res = random.choice(text_list)
-            return rand_res['text']
+            rand_res = random.choice(text_list)['text']
+        # get all slot placeholders from response string
+        placeholders = re.findall("{(.*?)}", rand_res)
+        # replace all placeholders with their slot values
+        for placeholder in placeholders:
+            slot_val = slot[placeholder]
+            pattern = '{' + placeholder + '}'
+            rand_res = rand_res.replace(pattern, slot_val)
+        return rand_res
 
     @staticmethod
     def create_rasa_response(response_txt):

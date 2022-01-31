@@ -6,12 +6,12 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
+from datetime import datetime
 from typing import Any, Dict, List, Text
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import ActionExecuted, EventType, SessionStarted, SlotSet
+from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
-import time
 
 
 class ActionHelloWorld(Action):
@@ -33,34 +33,24 @@ class ActionHelloWorld(Action):
         return []
 
 
-class ActionHumanFallback(Action):
+class ActionSetTopic(Action):
     def name(self) -> Text:
-        return "action_trigger_human_fallback"
+        return "action_set_topic"
 
-    @staticmethod
-    def fetch_slots(tracker: Tracker) -> List[EventType]:
-        """Collect slots that contain the user's name and phone number."""
-
-        slots = []
-        for key in ("name", "phone_number"):
-            value = tracker.get_slot(key)
-            if value is not None:
-                slots.append(SlotSet(key=key, value=value))
-        return slots
-
-    async def run(self, dispatcher, tracker: Tracker,
-                  domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        # the session should begin with a `session_started` event
-        #events = [SessionStarted()]
-
-        # any slots that should be carried over should come after the
-        # `session_started` event
-        #events.extend(self.fetch_slots(tracker))
-
-        # an `action_listen` should be added at the end as a user message follows
-        #events.append(ActionExecuted("action_listen"))
-
-        dispatcher.utter_message(text="Hello World!" + str(tracker.slots))
-
-        return []
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # dictionary of topics with their short and full name
+        dict_topics = {
+            "wohnung_anmelden": "Anmeldung einer Wohnung",
+            "wohnung_abmelden": "Abmeldung einer Wohnung"
+        }
+        topic = None
+        for event in tracker.events:
+            if event['event'] == 'user':
+                usr_intent = event['parse_data']['intent']['name']
+                if 'topic' in usr_intent:
+                    topic = usr_intent.replace('topic_', '')
+        topic = dict_topics[topic]
+        date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
+        print('[' + date_time + ']', ' set topic slot to: ', topic)
+        return [SlotSet("topic", topic)]

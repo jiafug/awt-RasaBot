@@ -1,8 +1,10 @@
 # https://forum.rasa.com/t/visualize-training-metrics-in-tensorboard/26531
 version: "2.0"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
+
 intents:
   - ablehnen
   - begruessen
@@ -23,11 +25,13 @@ intents:
   - verabschieden
   - inform_time
   - infrom_place
+
 entities:
   - language
   - sentiment
   - place
   - time
+
 slots:
   language:
     type: categorical
@@ -39,6 +43,9 @@ slots:
     influence_conversation: true
     values:
       - negative
+  topic:
+    type: text
+    influence_conversation: false
   place:
     type: text
     influence_conversation: false
@@ -54,15 +61,16 @@ slots:
   mail:
     type: text
     influence_conversation: false
+
 responses:
   utter_gruessen:
     - text: Hallo, wie kann ich Ihnen behilflich sein?
   utter_verabschieden:
     - text: Auf wiedersehen!
   utter_wohnung_anmelden:
-    - text: Möchten Sie über die Dienstleistung "Anmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
+    - text: Möchten Sie über die Dienstleistung 'Anmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
   utter_wohnung_abmelden:
-    - text: Möchten Sie über die Dienstleistung "Abmeldung einer Wohnung" informieren oder einen Termin dafür buchen?
+    - text: Möchten Sie über die Dienstleistung 'Abmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
   utter_ask_rephrase:
     - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
   utter_bad_sentiment:
@@ -110,12 +118,14 @@ responses:
         Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
         Oder wollen Sie hierfür einen Termin buchen?
   utter_book_appointment:
-    - text: Wollen Sie einen Termin für diese Dienstleistung buchen?
+    - text: Wollen Sie einen Termin für die Dienstleistung '{topic}' buchen?
   utter_restart:
     - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
 
 actions:
   - action_hello_world
+  - action_set_topic
+
 forms:
   booking_form_1:
     required_slots:
