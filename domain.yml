@@ -125,6 +125,7 @@ responses:
 actions:
   - action_hello_world
   - action_set_topic
+  - action_find_appointments
 
 forms:
   booking_form_1:

@@ -60,6 +60,7 @@ stories:
       - action: booking_form_1
       - active_loop: booking_form_1
       - active_loop: null
+      - action: action_find_appointments
       - action: booking_form_2
       - active_loop: booking_form_2
       - active_loop: null
@@ -76,6 +77,7 @@ stories:
       - action: booking_form_1
       - active_loop: booking_form_1
       - active_loop: null
+      - action: action_find_appointments
       - action: booking_form_2
       - active_loop: booking_form_2
       - active_loop: null

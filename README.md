@@ -93,7 +93,6 @@ After the rasa server is up and running, open the simple web GUI located in the 
 The following naming convention must be followed:
 
 - Intents for different service topics must begin with `topic_[short-name]`, e.g. `topic_wohnung_anmelden`
-
 - Q&A documents in the `/nlg/docs/` directory must to be named `[short-name].txt`
 
 To add new supported service topics:
