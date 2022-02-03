@@ -22,7 +22,8 @@ function init() {
         delay: 1000, // wait 1 sec.
         loading: true,
         content:
-          "Ich kann dir bei verschiedensten Angelegenheiten rund ums Bürgeramt helfen. Frag mich einfach etwas.",
+          "Ich kann Ihnen bei den verschiedensten Angelegenheiten rund ums Bürgeramt helfen.<br>" +
+          "Nennen Sie bitte zuerst die Dienstleistung worum es gehen soll.",
       });
     });
 }

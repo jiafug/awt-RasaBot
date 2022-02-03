@@ -83,9 +83,9 @@ responses:
   utter_verabschieden:
   - text: Auf wiedersehen!
   utter_wohnung_anmelden:
-  - text: Möchten Sie über die Dienstleistung 'Anmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
+  - text: Möchten Sie sich über die Dienstleistung <b>Anmeldung einer Wohnung<b/> informieren oder einen Termin dafür buchen?
   utter_wohnung_abmelden:
-  - text: Möchten Sie über die Dienstleistung 'Abmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
+  - text: Möchten Sie sich über die Dienstleistung <b>Abmeldung einer Wohnung</b> informieren oder einen Termin dafür buchen?
   utter_ask_rephrase:
   - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
   utter_bad_sentiment:
@@ -133,7 +133,7 @@ responses:
       Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
       Oder wollen Sie hierfür einen Termin buchen?
   utter_book_appointment:
-  - text: Wollen Sie einen Termin für die Dienstleistung '{topic}' buchen?
+  - text: Wollen Sie einen Termin für die Dienstleistung <b>{topic}</b> buchen?
   utter_show_appointment_details:
   - text: |
       Sie haben den folgenden Termin gewählt:<br>
