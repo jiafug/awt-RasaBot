@@ -12,7 +12,6 @@ stories:
       - action: action_set_topic
       - action: utter_wohnung_anmelden_basic
       - action: utter_followup_question
-      - checkpoint: check_topic
 
   - story: Wohnung anmelden ablehnen
     steps:
@@ -31,7 +30,6 @@ stories:
       - action: action_set_topic
       - action: utter_wohnung_abmelden_basic
       - action: utter_followup_question
-      - checkpoint: check_topic
 
   - story: Wohnung abmelden ablehnen
     steps:
@@ -43,15 +41,14 @@ stories:
   # general
   - story: Q&A
     steps:
-      - checkpoint: check_topic
+      - action: utter_followup_question
       - intent: faq
       - action: utter_qa
       - action: utter_followup_question
-      - checkpoint: check_qa
 
-  - story: Termin buchen mit Q&A
+  - story: Termin buchen
     steps:
-      - checkpoint: check_qa
+      - action: utter_followup_question
       - intent: book_appointment
       - action: utter_book_appointment
       - or:
@@ -61,31 +58,26 @@ stories:
       - active_loop: booking_form_1
       - active_loop: null
       - action: action_find_appointments
-      - checkpoint: check_appointments
-
-  - story: Termin buchen ohne Q&A
-    steps:
-      - checkpoint: check_topic
-      - intent: book_appointment
-      - action: utter_book_appointment
-      - or:
-          - intent: bestaetigen
-          - intent: danken
-      - action: booking_form_1
-      - active_loop: booking_form_1
-      - active_loop: null
-      - action: action_find_appointments
-      - checkpoint: check_appointments
 
   - story: vorgeschlagenen Termin buchen
     steps:
-      - checkpoint: check_appointments
+      - action: action_find_appointments
       - intent: booking_set_appointment
       - action: utter_show_appointment_details
       - action: booking_form_2
       - active_loop: booking_form_2
       - active_loop: null
       - action: utter_submit
+
+  - story: vorgeschlagenen Termin ablehnen
+    steps:
+      - action: action_find_appointments
+      - intent: booking_reject_appointment
+      - action: action_reset_slot_time
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: action_find_appointments
 
   # fallbacks
   - story: falsche sprache fallback

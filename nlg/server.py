@@ -75,12 +75,16 @@ class NLGServer(BaseHTTPRequestHandler):
                 usr_intent = event['parse_data']['intent']['name']
                 if 'topic' in usr_intent:
                     topic = usr_intent.replace('topic_', '')
-        # extract all slot
+        # extract all slots and last intent
         slots = request['tracker']['slots']
+        intent = request['tracker']['latest_message']['intent']['name']
+        intent_confi = request['tracker']['latest_message']['intent'][
+            'confidence']
         # logging
         date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
         print('[' + date_time + ']', ' topic: ', topic, ' action: ', action,
-              ' last_message: ', last_message, ' slots; ', slots)
+              ' last_message: ', last_message, ' intent: ', intent,
+              '(' + str(intent_confi) + ')')
         return topic, last_message, action, slots
 
     @staticmethod

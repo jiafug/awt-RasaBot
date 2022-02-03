@@ -33,7 +33,7 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
   - name: FallbackClassifier
-    threshold: 0.5
+    threshold: 0.25
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

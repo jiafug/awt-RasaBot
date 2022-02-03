@@ -1,48 +1,49 @@
-version: "2.0"
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-  - ablehnen
-  - begruessen
-  - bestaetigen
-  - book_appointment
-  - booking_set_appointment
-  - bot_challenge
-  - bot_features
-  - danken
-  - faq
-  - inform_time
-  - infrom_place
-  - mood_great
-  - mood_unhappy
-  - nlu_fallback
-  - place
-  - time
-  - topic_wohnung_abmelden
-  - topic_wohnung_anmelden
-  - verabschieden
+- ablehnen
+- begruessen
+- bestaetigen
+- book_appointment
+- booking_reject_appointment
+- booking_set_appointment
+- bot_challenge
+- bot_features
+- danken
+- faq
+- inform_time
+- infrom_place
+- mood_great
+- mood_unhappy
+- nlu_fallback
+- place
+- time
+- topic_wohnung_abmelden
+- topic_wohnung_anmelden
+- verabschieden
 entities:
-  - language
-  - sentiment
-  - place
-  - time
-  - appointment_id
-  - appointment_time
-  - appointment_office
-  - appointment_street
-  - appointment_city
+- language
+- sentiment
+- place
+- time
+- appointment_id
+- appointment_time
+- appointment_office
+- appointment_street
+- appointment_city
 slots:
   language:
     type: categorical
     influence_conversation: true
     values:
-      - deu
+    - deu
   sentiment:
     type: categorical
     influence_conversation: true
     values:
-      - negative
+    - negative
   topic:
     type: text
     influence_conversation: false
@@ -78,88 +79,89 @@ slots:
     influence_conversation: false
 responses:
   utter_gruessen:
-    - text: Hallo, wie kann ich Ihnen behilflich sein?
+  - text: Hallo, wie kann ich Ihnen behilflich sein?
   utter_verabschieden:
-    - text: Auf wiedersehen!
+  - text: Auf wiedersehen!
   utter_wohnung_anmelden:
-    - text: Möchten Sie über die Dienstleistung 'Anmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
+  - text: Möchten Sie über die Dienstleistung 'Anmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
   utter_wohnung_abmelden:
-    - text: Möchten Sie über die Dienstleistung 'Abmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
+  - text: Möchten Sie über die Dienstleistung 'Abmeldung einer Wohnung' informieren oder einen Termin dafür buchen?
   utter_ask_rephrase:
-    - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
+  - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
   utter_bad_sentiment:
-    - text: Tut mir leid, dass habe ich immer noch nicht verstanden. Möchten Sie mit einem Menschen sprechen?
+  - text: Tut mir leid, dass habe ich immer noch nicht verstanden. Möchten Sie mit einem Menschen sprechen?
   utter_iamabot:
-    - text: Ich bin ein Bot.
+  - text: Ich bin ein Bot.
   utter_wrong_language:
-    - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
+  - text: Tut mir leid, aber ich spreche aktuell nur deutsch.
   utter_default:
-    - text: Es tut mir leid, ich kann Ihnen nicht helfen.
+  - text: Es tut mir leid, ich kann Ihnen nicht helfen.
   utter_qa:
-    - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
+  - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
   utter_ask_place:
-    - text: Im welchem Bezirk soll ich für Sie Termine suchen?
+  - text: Im welchem Bezirk soll ich für Sie Termine suchen?
   utter_ask_time:
-    - text: Bitte nennen Sie mir Ihren gewünschten Tag/Zeit?
+  - text: Bitte nennen Sie mir Ihren gewünschten Tag/Zeit?
   utter_ask_name:
-    - text: Um mit der Terminbuchung fortzufahren, benötige ich Ihren vollständigen Namen.
+  - text: Um mit der Terminbuchung fortzufahren, benötige ich Ihren vollständigen Namen.
   utter_ask_phone:
-    - text: Wie lautet Ihre Telefonnummer?
+  - text: Wie lautet Ihre Telefonnummer?
   utter_ask_mail:
-    - text: Wie lautet Ihre E-Mail Adresse? Sie erhalten eine Buchungsbestätigung per E-Mail.
+  - text: Wie lautet Ihre E-Mail Adresse? Sie erhalten eine Buchungsbestätigung per E-Mail.
   utter_submit:
-    - text: Es wurde für Sie erfolgreich ein Termin gebucht.
+  - text: Es wurde für Sie erfolgreich ein Termin gebucht.
   utter_wohnung_anmelden_basic:
-    - text: |
-        Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn<br>
-        - Sie innerhalb der Stadt in eine neue Wohnung umgezogen sind oder<br>
-        - Sie aus einer anderen Gemeinde in Deutschland neu nach Berlin gezogen sind oder<br>
-        - Sie aus dem Ausland nach Berlin gezogen sind.<br>
-        Nach Ihrer Anmeldung erhalten Sie eine Meldebestätigung.
+  - text: |
+      Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn<br>
+      - Sie innerhalb der Stadt in eine neue Wohnung umgezogen sind oder<br>
+      - Sie aus einer anderen Gemeinde in Deutschland neu nach Berlin gezogen sind oder<br>
+      - Sie aus dem Ausland nach Berlin gezogen sind.<br>
+      Nach Ihrer Anmeldung erhalten Sie eine Meldebestätigung.
   utter_wohnung_abmelden_basic:
-    - text: |
-        Sie geben eine Berliner Wohnung auf, weil Sie in das Ausland verziehen<br>
-        oder<br>
-        Sie geben eine von mehreren Wohnungen in Deutschland auf, für die Sie angemeldet sind und die Berliner Wohnung bleibt bestehen<br>
-        oder<br>
-        Sie geben eine von mehreren Berliner Wohnungen auf, für die Sie angemeldet sind<br>
-        <br>
-        Sie müssen sich bei der Meldebehörde in Berlin nur bei einem Wegzug ins Ausland abmelden oder bei der Aufgabe einer Haupt- oder Nebenwohnung, ohne dass Sie in eine andere Wohnung im Inland einziehen.<br>
-        Beim Wegzug in das Ausland gilt, dass Sie aus dieser Wohnung ausziehen und dort zukünftig nicht wieder wohnen werden - befristete Auslandsaufenthalte, z.B. zu Studienzwecken bedingen keine Abmeldung.<br>
-        Die Abmeldung kann im Zeitraum von 7 Tagen vor, muss aber bis 14 Tage nach dem Auszug vorgenommen werden. Sie erhalten eine Abmeldebestätigung.<br>
+  - text: |
+      Sie geben eine Berliner Wohnung auf, weil Sie in das Ausland verziehen<br>
+      oder<br>
+      Sie geben eine von mehreren Wohnungen in Deutschland auf, für die Sie angemeldet sind und die Berliner Wohnung bleibt bestehen<br>
+      oder<br>
+      Sie geben eine von mehreren Berliner Wohnungen auf, für die Sie angemeldet sind<br>
+      <br>
+      Sie müssen sich bei der Meldebehörde in Berlin nur bei einem Wegzug ins Ausland abmelden oder bei der Aufgabe einer Haupt- oder Nebenwohnung, ohne dass Sie in eine andere Wohnung im Inland einziehen.<br>
+      Beim Wegzug in das Ausland gilt, dass Sie aus dieser Wohnung ausziehen und dort zukünftig nicht wieder wohnen werden - befristete Auslandsaufenthalte, z.B. zu Studienzwecken bedingen keine Abmeldung.<br>
+      Die Abmeldung kann im Zeitraum von 7 Tagen vor, muss aber bis 14 Tage nach dem Auszug vorgenommen werden. Sie erhalten eine Abmeldebestätigung.<br>
   utter_followup_question:
-    - text: |
-        Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
-        Oder wollen Sie hierfür einen Termin buchen?
+  - text: |
+      Haben Sie hierzu weitere Fragen wie z.B. Fragen zu den Voraussetzungen, tippen Sie diese ins Eingabefeld.<br>
+      Oder wollen Sie hierfür einen Termin buchen?
   utter_book_appointment:
-    - text: Wollen Sie einen Termin für die Dienstleistung '{topic}' buchen?
+  - text: Wollen Sie einen Termin für die Dienstleistung '{topic}' buchen?
   utter_show_appointment_details:
-    - text: |
-        Sie haben den folgenden Termin gewählt:<br>
-        <b>{appointment_time}</b><br>
-        <i>{appointment_office}</i><br>
-        <i>{appointment_street}</i><br>
-        <i>{appointment_city}</i>
+  - text: |
+      Sie haben den folgenden Termin gewählt:<br>
+      <b>{appointment_time}</b><br>
+      <i>{appointment_office}</i><br>
+      <i>{appointment_street}</i><br>
+      <i>{appointment_city}</i>
   utter_restart:
-    - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
+  - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
 actions:
-  - action_hello_world
-  - action_set_topic
-  - action_find_appointments
+- action_hello_world
+- action_set_topic
+- action_find_appointments
+- action_reset_slot_time
 forms:
   booking_form_1:
     required_slots:
       place:
-        - type: from_entity
-          entity: place
+      - type: from_entity
+        entity: place
       time:
-        - type: from_entity
-          entity: time
+      - type: from_entity
+        entity: time
   booking_form_2:
     required_slots:
       name:
-        - type: from_text
+      - type: from_text
       phone:
-        - type: from_text
+      - type: from_text
       mail:
-        - type: from_text
+      - type: from_text

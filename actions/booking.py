@@ -11,7 +11,17 @@ script_dir = os.path.dirname(__file__)  # <--- absolute dir the script is in
 db = sqlite3.connect(script_dir + '/db.sqlite3')
 
 
+class ActionResetSlotTime(Action):
+    """Sets slotvalue of time to None"""
+    def name(self):
+        return "action_reset_slot_time"
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("time", None)]
+
+
 class ActionFindAppointments(Action):
+    """Finds available appointments for a given service topic, place and time combination."""
     def name(self) -> Text:
         # initializes database with its relations
         init_db()
@@ -50,9 +60,9 @@ class ActionFindAppointments(Action):
             }
             buttons.append(button)
         new_search_button = {
-                "title": "Ein anderer Tag",
-                "payload": "/intent_name"
-            }
+            "title": "Ein anderer Zeitpunkt",
+            "payload": "/booking_reject_appointment"
+        }
         buttons.append(new_search_button)
         if len(today) >= 1:
             dispatcher.utter_button_message(
@@ -64,7 +74,8 @@ class ActionFindAppointments(Action):
                 " sind leider keine Termine mehr verfügbar. Die nächsten Termine sind:",
                 buttons)
         date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
-        print('[' + date_time + ']', ' found appointments: ', other)
+        print('[' + date_time + ']', ' found appointments: ', len(other),
+              ' for requested date: ', requested_day)
         return []
 
 

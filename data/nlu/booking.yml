@@ -4,3 +4,10 @@ nlu:
     examples: |
       - 21:00 Uhr 
       - 23.04.2022 10:30 Uhr
+      
+  - intent: booking_reject_appointment
+    examples: |
+      - Ein andere Termin
+      - ist noch an Tag frei?
+      - Ist es morgen auch möglich
+      - wie wäre etwas später
