@@ -93,7 +93,7 @@ function handleButtons(response) {
   buttons = [];
   for (let i = 0; i < response.quick_replies.length; i++) {
     title = response.quick_replies[i]["title"];
-    payload = response.quick_replies[i]["title"];
+    payload = response.quick_replies[i]["payload"];
     msg = {
       text: title,
       value: payload,

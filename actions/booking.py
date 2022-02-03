@@ -48,11 +48,16 @@ class ActionFindAppointments(Action):
             full_date = date.strftime("%d.%m.%Y %H:%M") + ' Uhr'
             # set entities directly through payload
             payload = str({
-                "appointment_id": str(entry[0]),
-                "appointment_time": full_date,
-                "appointment_office": entry[2],
-                "appointment_street": entry[3],
-                "appointment_city": str(entry[4]) + str(entry[5])
+                "appointment_id":
+                str(entry[0]),
+                "appointment_time":
+                full_date,
+                "appointment_office":
+                entry[2],
+                "appointment_street":
+                entry[4],
+                "appointment_city":
+                str(entry[5]) + ' ' + str(entry[6])
             }).replace("\'", "\"")
             button = {
                 "title": full_date,
