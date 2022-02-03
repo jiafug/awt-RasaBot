@@ -23,33 +23,46 @@ class ActionFindAppointments(Action):
         service_slot = tracker.slots['topic']
         district_slot = tracker.slots['place']
         date_slot = tracker.slots['time']
-        requested_day = datetime.fromisoformat(date_slot).strftime("%d.%b.%Y")
+        requested_day = datetime.fromisoformat(date_slot).strftime("%d.%m.%Y")
         today, other = get_available_appointments(service_slot, district_slot,
                                                   date_slot)
         buttons = []
+        loop = None
+        # show appointments of the requested day if there is at least one
         if len(today) >= 1:
-            for entry in today:
-                date = datetime.fromisoformat(entry[1])
-                button = {
-                    "title": date.strftime("%H:%M"),
-                    "payload": "/goodbye"
-                }
-                buttons.append(button)
+            loop = today
+        else:
+            loop = other
+        for entry in loop:
+            date = datetime.fromisoformat(entry[1])
+            full_date = date.strftime("%d.%m.%Y %H:%M") + ' Uhr'
+            # set entities directly through payload
+            payload = str({
+                "appointment_id": str(entry[0]),
+                "appointment_time": full_date,
+                "appointment_office": entry[2],
+                "appointment_street": entry[3],
+                "appointment_city": str(entry[4]) + str(entry[5])
+            }).replace("\'", "\"")
+            button = {
+                "title": full_date,
+                "payload": "/booking_set_appointment" + payload
+            }
+            buttons.append(button)
+        new_search_button = {
+                "title": "Ein anderer Tag",
+                "payload": "/intent_name"
+            }
+        buttons.append(new_search_button)
+        if len(today) >= 1:
             dispatcher.utter_button_message(
                 "Für den " + requested_day + " konnte diese Termine finden:",
                 buttons)
         else:
-            for entry in other:
-                date = datetime.fromisoformat(entry[1])
-                button = {
-                    "title": date.strftime("%d.%m.%Y %H:%M"),
-                    "payload": "/goodbye"
-                }
-                buttons.append(button)
-                dispatcher.utter_button_message(
-                    "Am " + requested_day +
-                    " sind leider keine mehr Termine verfügbar. Die nächsten Termine sind:",
-                    buttons)
+            dispatcher.utter_button_message(
+                "Am " + requested_day +
+                " sind leider keine Termine mehr verfügbar. Die nächsten Termine sind:",
+                buttons)
         date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
         print('[' + date_time + ']', ' found appointments: ', other)
         return []

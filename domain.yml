@@ -1,20 +1,19 @@
-# https://forum.rasa.com/t/visualize-training-metrics-in-tensorboard/26531
 version: "2.0"
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
-
 intents:
   - ablehnen
   - begruessen
   - bestaetigen
-  - bestaetigena
   - book_appointment
+  - booking_set_appointment
   - bot_challenge
   - bot_features
   - danken
   - faq
+  - inform_time
+  - infrom_place
   - mood_great
   - mood_unhappy
   - nlu_fallback
@@ -23,15 +22,16 @@ intents:
   - topic_wohnung_abmelden
   - topic_wohnung_anmelden
   - verabschieden
-  - inform_time
-  - infrom_place
-
 entities:
   - language
   - sentiment
   - place
   - time
-
+  - appointment_id
+  - appointment_time
+  - appointment_office
+  - appointment_street
+  - appointment_city
 slots:
   language:
     type: categorical
@@ -52,6 +52,21 @@ slots:
   time:
     type: text
     influence_conversation: false
+  appointment_id:
+    type: text
+    influence_conversation: false
+  appointment_time:
+    type: text
+    influence_conversation: false
+  appointment_office:
+    type: text
+    influence_conversation: false
+  appointment_street:
+    type: text
+    influence_conversation: false
+  appointment_city:
+    type: text
+    influence_conversation: false
   name:
     type: text
     influence_conversation: false
@@ -61,7 +76,6 @@ slots:
   mail:
     type: text
     influence_conversation: false
-
 responses:
   utter_gruessen:
     - text: Hallo, wie kann ich Ihnen behilflich sein?
@@ -83,18 +97,18 @@ responses:
     - text: Es tut mir leid, ich kann Ihnen nicht helfen.
   utter_qa:
     - text: Tut mir leid, ich habe Sie nicht verstanden. Könnten Sie es anders formulieren?
+  utter_ask_place:
+    - text: Im welchem Bezirk soll ich für Sie Termine suchen?
+  utter_ask_time:
+    - text: Bitte nennen Sie mir Ihren gewünschten Tag/Zeit?
+  utter_ask_name:
+    - text: Um mit der Terminbuchung fortzufahren, benötige ich Ihren vollständigen Namen.
+  utter_ask_phone:
+    - text: Wie lautet Ihre Telefonnummer?
+  utter_ask_mail:
+    - text: Wie lautet Ihre E-Mail Adresse? Sie erhalten eine Buchungsbestätigung per E-Mail.
   utter_submit:
     - text: Es wurde für Sie erfolgreich ein Termin gebucht.
-  utter_ask_place:
-    - text: Welcher Bezirk?
-  utter_ask_time:
-    - text: Zeit?
-  utter_ask_name:
-    - text: Vollständiger Name
-  utter_ask_phone:
-    - text: Telefonnummer
-  utter_ask_mail:
-    - text: E-Mail
   utter_wohnung_anmelden_basic:
     - text: |
         Melden Sie sich innerhalb von 14 Tagen nach Ihrem Einzug bei Ihrer Meldebehörde an, wenn<br>
@@ -119,14 +133,19 @@ responses:
         Oder wollen Sie hierfür einen Termin buchen?
   utter_book_appointment:
     - text: Wollen Sie einen Termin für die Dienstleistung '{topic}' buchen?
+  utter_show_appointment_details:
+    - text: |
+        Sie haben den folgenden Termin gewählt:<br>
+        <b>{appointment_time}</b><br>
+        <i>{appointment_office}</i><br>
+        <i>{appointment_street}</i><br>
+        <i>{appointment_city}</i>
   utter_restart:
     - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
-
 actions:
   - action_hello_world
   - action_set_topic
   - action_find_appointments
-
 forms:
   booking_form_1:
     required_slots:

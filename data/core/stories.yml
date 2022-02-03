@@ -61,10 +61,7 @@ stories:
       - active_loop: booking_form_1
       - active_loop: null
       - action: action_find_appointments
-      - action: booking_form_2
-      - active_loop: booking_form_2
-      - active_loop: null
-      - action: utter_submit
+      - checkpoint: check_appointments
 
   - story: Termin buchen ohne Q&A
     steps:
@@ -78,6 +75,13 @@ stories:
       - active_loop: booking_form_1
       - active_loop: null
       - action: action_find_appointments
+      - checkpoint: check_appointments
+
+  - story: vorgeschlagenen Termin buchen
+    steps:
+      - checkpoint: check_appointments
+      - intent: booking_set_appointment
+      - action: utter_show_appointment_details
       - action: booking_form_2
       - active_loop: booking_form_2
       - active_loop: null
