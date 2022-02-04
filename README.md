@@ -6,10 +6,16 @@
 
 ### Install the dependencies
 
-In a Python 3.7.X virtual environment run:
+In a new Python 3.7.X virtual environment run:
 
 ```bash
-pip3 install -r requirements.txt
+# upgrade pip to newer version
+pip install -U pip
+# make sure wheel and setuptools is installed and updated
+pip install -U setuptools wheel
+# install all other dependencies
+# note: this file does not contain all necessary dependencies to run the notebooks
+pip install -r requirements.txt
 ```
 
 Another requirement for the NLU pipeline is Docker. Reference for Docker installation: https://docs.docker.com/get-docker/
