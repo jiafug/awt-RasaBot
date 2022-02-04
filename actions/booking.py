@@ -31,6 +31,7 @@ class ActionBookAppointment(Action):
         name = tracker.slots['name']
         phone = tracker.slots['phone']
         mail = tracker.slots['mail']
+        book_appointment(appointment_id, name, phone, mail)
         return []
 
 
