@@ -104,6 +104,7 @@ stories:
       - action: booking_form_2
       - active_loop: booking_form_2
       - active_loop: null
+      - action: action_book_appointment
       - action: utter_submit
 
   - story: vorgeschlagenen Termin ablehnen

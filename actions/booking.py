@@ -20,6 +20,20 @@ class ActionResetSlotTime(Action):
         return [SlotSet("time", None)]
 
 
+class ActionBookAppointment(Action):
+    """Action to book an appointment."""
+    def name(self) -> Text:
+        return "action_book_appointment"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        appointment_id = tracker.slots['appointment_id']
+        name = tracker.slots['name']
+        phone = tracker.slots['phone']
+        mail = tracker.slots['mail']
+        return []
+
+
 class ActionFindAppointments(Action):
     """Finds available appointments for a given service topic, place and time combination."""
     def name(self) -> Text:
@@ -84,7 +98,33 @@ class ActionFindAppointments(Action):
         return []
 
 
+def book_appointment(id, name, phone, mail):
+    """Function for appointment booking.
+
+    Args:
+        id (str): id of appointment
+        name (str): full name of user
+        phone (str): phone number of user
+        mail (str): e-mail of user
+    """
+    cursor = db.cursor()
+    cursor.execute(
+        '''INSERT INTO bookings(appointment,name, phone, mail)
+                  VALUES(?,?,?,?)''', (int(id), name, phone, mail))
+    db.commit()
+
+
 def get_available_appointments(service_slot, district_slot, date_slot):
+    """Function that finds appointments for given parameters.
+
+    Args:
+        service_slot (str): type of requested service
+        district_slot (str): requested location
+        date_slot ([type]): requested date of appointment
+
+    Returns:
+        tuple of available appointments for the requested day and next available appointments
+    """
     cursor = db.cursor()
     sql = '''
         SELECT appointments.id, appointments.date, offices.name, offices.district, 
@@ -128,6 +168,7 @@ def get_available_appointments(service_slot, district_slot, date_slot):
 
 
 def init_db():
+    """Create empty tables."""
     cursor = db.cursor()
     # create relation for offices
     cursor.execute('''

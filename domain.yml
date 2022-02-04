@@ -144,10 +144,10 @@ responses:
   utter_restart:
   - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
 actions:
-- action_hello_world
 - action_set_topic
 - action_find_appointments
 - action_reset_slot_time
+- action_book_appointment
 forms:
   booking_form_1:
     required_slots:

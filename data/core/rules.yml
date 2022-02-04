@@ -6,7 +6,6 @@ rules:
     steps:
       - intent: begruessen
       - action: utter_gruessen
-      - action: action_hello_world
 
   - rule: user verabschieden
     steps:
