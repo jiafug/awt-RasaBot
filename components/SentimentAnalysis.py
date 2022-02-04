@@ -25,18 +25,20 @@ class MyComponent(Component):
     def required_components(cls) -> List[Type[Component]]:
         return []
 
-    def __init__(self,
-                 component_config: Optional[Dict[Text, Any]] = None) -> None:
+    def __init__(self, component_config: Optional[Dict[Text, Any]] = None) -> None:
         super().__init__(component_config)
         dirname = os.path.dirname(__file__)
         model_path = os.path.join(
-            dirname, '../notebooks/models/fasttext-v2-model-100.pt')
+            dirname, "../notebooks/models/fasttext-v2-model-100.pt"
+        )
         vocab_path = os.path.join(
-            dirname, '../notebooks/models/fasttext-v2-vocab-100.pt')
+            dirname, "../notebooks/models/fasttext-v2-vocab-100.pt"
+        )
         self.vocab = torch.load(vocab_path)
         self.model = FastText(3, 100002, 300, 10, 1)
         self.model.load_state_dict(
-            torch.load(model_path, map_location=torch.device('cpu')))
+            torch.load(model_path, map_location=torch.device("cpu"))
+        )
         self.model.eval()
 
     def train(
@@ -48,13 +50,12 @@ class MyComponent(Component):
         pass
 
     def process(self, message: Message, **kwargs: Any) -> None:
-        text = message.get('text_tokens')
+        text = message.get("text_tokens")
         if text is not None:
             tok_list = []
             for tok in text:
                 tok_list.append(tok.text)
-            pred = self.model.predict_sentiment(self.model, self.vocab,
-                                                tok_list)
+            pred = self.model.predict_sentiment(self.model, self.vocab, tok_list)
             np_array = pred.flatten().detach().numpy()
             val_of_max = np.amax(np_array)
             idx_of_max = np.argmax(np_array)
@@ -64,18 +65,19 @@ class MyComponent(Component):
                 senti = "negative"
             else:
                 senti = "neutral"
-            entity = [{
-                'value': senti,
-                'confidence': float(val_of_max),
-                'entity': 'sentiment',
-                'extractor:': 'sentiment_extractor'
-            }]
-            message.set('entities',
-                        message.get('entities', []) + entity,
-                        add_to_output=True)
+            entity = [
+                {
+                    "value": senti,
+                    "confidence": float(val_of_max),
+                    "entity": "sentiment",
+                    "extractor:": "sentiment_extractor",
+                }
+            ]
+            message.set(
+                "entities", message.get("entities", []) + entity, add_to_output=True
+            )
 
-    def persist(self, file_name: Text,
-                model_dir: Text) -> Optional[Dict[Text, Any]]:
+    def persist(self, file_name: Text, model_dir: Text) -> Optional[Dict[Text, Any]]:
         pass
 
     @classmethod

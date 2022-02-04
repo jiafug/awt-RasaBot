@@ -5,15 +5,12 @@ from torch import LongTensor
 
 class FastText(nn.Module):
 
-    tagger = ht.HanoverTagger('morphmodel_ger.pgz')
+    tagger = ht.HanoverTagger("morphmodel_ger.pgz")
 
-    def __init__(self, output_dim, vocab_size, embedding_dim, hidden_size,
-                 pad_idx):
+    def __init__(self, output_dim, vocab_size, embedding_dim, hidden_size, pad_idx):
         super().__init__()
         # embedding layer
-        self.embedding = nn.Embedding(vocab_size,
-                                      embedding_dim,
-                                      padding_idx=pad_idx)
+        self.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=pad_idx)
         # hidden layer
         self.fc1 = nn.Linear(embedding_dim, hidden_size)
         # output layer
@@ -32,7 +29,7 @@ class FastText(nn.Module):
     def generate_bigrams(x):
         n_grams = set(zip(*[x[i:] for i in range(2)]))
         for n_gram in n_grams:
-            x.append(' '.join(n_gram))
+            x.append(" ".join(n_gram))
         return x
 
     @staticmethod
@@ -40,10 +37,9 @@ class FastText(nn.Module):
         lemmas = []
         for string in string_list:
             lemma = [
-                lemma for (word, lemma,
-                           pos) in FastText.tagger.tag_sent(string.split())
+                lemma for (word, lemma, pos) in FastText.tagger.tag_sent(string.split())
             ]
-            lemmas.append(' '.join(lemma))
+            lemmas.append(" ".join(lemma))
         return lemmas
 
     @staticmethod

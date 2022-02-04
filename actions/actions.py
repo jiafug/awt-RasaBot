@@ -18,21 +18,25 @@ class ActionSetTopic(Action):
     def name(self) -> Text:
         return "action_set_topic"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
         # [short-name]: [long-name] mapping
         # dictionary of topics with their short and full name
         dict_topics = {
             "wohnung_anmelden": "Anmeldung einer Wohnung",
-            "wohnung_abmelden": "Abmeldung einer Wohnung"
+            "wohnung_abmelden": "Abmeldung einer Wohnung",
         }
         topic = None
         for event in tracker.events:
-            if event['event'] == 'user':
-                usr_intent = event['parse_data']['intent']['name']
-                if 'topic' in usr_intent:
-                    topic = usr_intent.replace('topic_', '')
+            if event["event"] == "user":
+                usr_intent = event["parse_data"]["intent"]["name"]
+                if "topic" in usr_intent:
+                    topic = usr_intent.replace("topic_", "")
         topic = dict_topics[topic]
         date_time = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
-        print('[' + date_time + ']', ' set topic slot to: ', topic)
+        print("[" + date_time + "]", " set topic slot to: ", topic)
         return [SlotSet("topic", topic)]
