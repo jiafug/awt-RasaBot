@@ -1,31 +1,5 @@
 version: "2.0"
 nlu:
-  - lookup: place
-    examples: |
-      - Mitte
-      - Friedrichshain-Kreuzberg
-      - Friedrichshain
-      - Kreuzberg
-      - Pankow
-      - Spandau
-      - Tempelhof-Schöneberg
-      - Tempelhof
-      - Schöneberg
-      - Treptow-Köpenick
-      - Treptow
-      - Köpenick
-      - Lichtenberg
-      - Charlottenburg-Wilmersdorf
-      - Charlottenburg
-      - Wilmersdorf
-      - Steglitz-Zehlendorf
-      - Steglitz
-      - Zehlendorf
-      - Neukölln
-      - Marzahn-Hellersdorf
-      - Marzahn
-      - Hellersdorf
-      - Reinickendorf
   - intent: begruessen
     examples: |
       - Grüß Gott!
@@ -406,11 +380,6 @@ nlu:
       - Sie können mir helfen
       - Was können Sie mir beibringen?
       - Was können Sie
-  - intent: book_appointment
-    examples: |
-      - Termin buchen
-      - Termin
-      - ich möchte einen Termin
   - intent: faq
     examples: |
       - Bis wann muss ich meine Wohnung anmelden?
@@ -438,23 +407,3 @@ nlu:
       - Was musst man vorbeibringen?
       - Worauf müssen Ausländer achten?
       - Wielange muss man warten?
-  - intent: inform_time
-    examples: |
-      - Ich möchte morgen einen Termin buchen
-      - übermogen wäre gut
-      - wie wäre es mit nächster Woche?
-      - geht es am Mittwoch?
-      - diese Woche
-      - in 3 Tage
-  - intent: infrom_place
-    examples: |
-      - in meiner Nähe
-      - Mitte
-      - Ost
-      - West
-      - Nord
-      - Berlin [Mitte](place)
-      - [Pankow](place)
-
-
-

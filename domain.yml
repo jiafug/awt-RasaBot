@@ -13,6 +13,7 @@ intents:
 - bot_features
 - danken
 - faq
+- inform_place
 - inform_time
 - infrom_place
 - mood_great
