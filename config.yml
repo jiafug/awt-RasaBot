@@ -34,7 +34,7 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
   - name: FallbackClassifier
-    threshold: 0.7
+    threshold: 0.5
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
@@ -42,7 +42,7 @@ policies:
   - name: MemoizationPolicy
   - name: TEDPolicy
     model_confidence: "linear_norm"
-    max_history: 5
+    max_history: 8
     epochs: 100
     constrain_similarities: true
   - name: RulePolicy
