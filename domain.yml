@@ -4,6 +4,7 @@ session_config:
   carry_over_slots_to_new_session: false
 intents:
 - ablehnen
+- anything_else
 - begruessen
 - bestaetigen
 - book_appointment
@@ -13,6 +14,9 @@ intents:
 - bot_features
 - danken
 - faq
+- inform_email
+- inform_name
+- inform_phone-number
 - inform_place
 - inform_time
 - infrom_place
@@ -72,10 +76,10 @@ slots:
   name:
     type: text
     influence_conversation: false
-  phone:
+  phone-number:
     type: text
     influence_conversation: false
-  mail:
+  email:
     type: text
     influence_conversation: false
 responses:
@@ -105,9 +109,9 @@ responses:
   - text: Bitte nennen Sie mir Ihren gewünschten Tag/Zeit?
   utter_ask_name:
   - text: Um mit der Terminbuchung fortzufahren, benötige ich Ihren vollständigen Namen.
-  utter_ask_phone:
+  utter_ask_phone-number:
   - text: Wie lautet Ihre Telefonnummer?
-  utter_ask_mail:
+  utter_ask_email:
   - text: Wie lautet Ihre E-Mail Adresse? Sie erhalten eine Buchungsbestätigung per E-Mail.
   utter_submit:
   - text: Es wurde für Sie erfolgreich ein Termin gebucht.
@@ -144,11 +148,14 @@ responses:
       <i>{appointment_city}</i>
   utter_restart:
   - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
+  utter_anything_else:
+  - text: Womit kann ich Ihnen behilflich sein?
 actions:
 - action_set_topic
 - action_find_appointments
 - action_reset_slot_time
 - action_book_appointment
+- action_default_ask_affirmation
 forms:
   booking_form_1:
     required_slots:
@@ -162,7 +169,9 @@ forms:
     required_slots:
       name:
       - type: from_text
-      phone:
-      - type: from_text
-      mail:
-      - type: from_text
+      phone-number:
+      - type: from_entity
+        entity: phone-number
+      email:
+      - type: from_entity
+        entity: email

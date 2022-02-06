@@ -18,10 +18,10 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 100
-    entity_recognitiona: False
+    entity_recognition: False
   - name: "DucklingEntityExtractor"
     url: "http://localhost:8000"
-    dimensions: ["time"]
+    dimensions: ["time", "phone-number", "email"]
     locale: "de_DE"
     timezone: "Europe/Berlin"
     timeout: 3
@@ -34,7 +34,7 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
   - name: FallbackClassifier
-    threshold: 0.25
+    threshold: 0.7
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

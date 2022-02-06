@@ -1,23 +1,35 @@
 version: "2.0"
 nlu:
-- intent: booking_set_appointment
-  examples: |
-    - 21:00 Uhr
-    - 23.04.2022 10:30 Uhr
 - intent: booking_reject_appointment
   examples: |
     - Ein andere Termin
     - ist noch an Tag frei?
     - Ist es morgen auch möglich
     - wie wäre etwas später
-- intent: inform_time
+- intent: book_appointment
   examples: |
-    - Ich möchte morgen einen Termin buchen
-    - übermogen wäre gut
-    - wie wäre es mit nächster Woche?
-    - geht es am Mittwoch?
-    - diese Woche
-    - in 3 Tage
+    - Termin buchen
+    - Termin
+    - ich möchte einen Termin
+- intent: booking_set_appointment
+  examples: |
+    - 21:00 Uhr
+    - 23.04.2022 10:30 Uhr
+- intent: inform_name
+  examples: |
+    - Max Mustermann
+    - Maria Musterfrau
+    - Karl Weber
+- intent: inform_email
+  examples: |
+    - kdasmdsa@dasffsad.e
+    - mail@gmail.com
+    - abcd@icloud.com
+- intent: inform_phone-number
+  examples: |
+    - 415-123-3444
+    - +33 4 76095663
+    - (650)-283-4757 ext 897
 - intent: inform_place
   examples: |
     - in [Mitte](place)

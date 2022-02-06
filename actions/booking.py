@@ -35,8 +35,8 @@ class ActionBookAppointment(Action):
     ) -> List[Dict[Text, Any]]:
         appointment_id = tracker.slots["appointment_id"]
         name = tracker.slots["name"]
-        phone = tracker.slots["phone"]
-        mail = tracker.slots["mail"]
+        phone = tracker.slots["phone-number"]
+        mail = tracker.slots["email"]
         book_appointment(appointment_id, name, phone, mail)
         return []
 
