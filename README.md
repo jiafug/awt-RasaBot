@@ -101,9 +101,9 @@ After the rasa server is up and running, open the simple web GUI located in the 
 - Intents for different service topics must begin with `topic_[short-name]`, e.g. `topic_wohnung_anmelden`
 - Q&A documents in the `/nlg/docs/` directory must to be named `[short-name].txt`
 
-#### To add new supported service topics
+### How to add new supported service topics
 
-##### Add new service topic for q&a
+#### Add new service topic for q&a
 
 1. create new `.yml` file in the `/data/nlu/` directory
 2. add intent name to the `/domain.yml` file
@@ -115,7 +115,7 @@ After the rasa server is up and running, open the simple web GUI located in the 
 
 > `[long-name]` can be an arbitrary string and will only be used to replace slot placeholders in responses, i.e. `{topic} ist Ihr gewähltes Thema.` -> `[long-name] ist Ihr gewähltes Thema`.
 
-##### Add new service topic to appointment booking process
+#### Add new service topic to appointment booking process
 
 > Have a look at the `/actions/db.sqlite3` database to get a better overview. A simple web based SQLite viewer can be found here: <https://inloop.github.io/sqlite-viewer/>
 
