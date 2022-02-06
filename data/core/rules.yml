@@ -32,3 +32,20 @@ rules:
     steps:
       - intent: anything_else
       - action: utter_anything_else
+
+  - rule: faq when topic is set
+    condition:
+    - slot_was_set: 
+      - topic
+    steps:
+      - intent: faq
+      - action: utter_qa
+      - action: utter_followup_question
+
+  - rule: faq when no topic is set
+    condition:
+    - slot_was_set: 
+      - topic: null
+    steps:
+      - intent: faq
+      - action: utter_no_topic

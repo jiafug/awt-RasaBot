@@ -51,7 +51,7 @@ slots:
     - negative
   topic:
     type: text
-    influence_conversation: false
+    influence_conversation: true
   place:
     type: text
     influence_conversation: false
@@ -150,6 +150,8 @@ responses:
   - text: Nennen Sie bitte die Dienstleistung über die Sie sich informieren oder einen Termin buchen wollen.
   utter_anything_else:
   - text: Womit kann ich Ihnen behilflich sein?
+  utter_no_topic:
+  - text: Bitte nennen Sie zuerst die Dienstleistung.
 actions:
 - action_set_topic
 - action_find_appointments

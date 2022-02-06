@@ -69,13 +69,6 @@ stories:
       - action: action_find_appointments
 
   # general
-  - story: Q&A
-    steps:
-      - action: utter_followup_question
-      - intent: faq
-      - action: utter_qa
-      - action: utter_followup_question
-
   - story: Termin finden
     steps:
       - action: utter_followup_question
