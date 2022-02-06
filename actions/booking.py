@@ -59,6 +59,8 @@ class ActionFindAppointments(Action):
         service_slot = tracker.slots["topic"]
         district_slot = tracker.slots["place"]
         date_slot = tracker.slots["time"]
+        if isinstance(date_slot, dict):
+            date_slot = date_slot["from"]
         requested_day = datetime.fromisoformat(date_slot).strftime("%d.%m.%Y")
         today, other = get_available_appointments(
             service_slot, district_slot, date_slot
