@@ -6,7 +6,6 @@ rules:
     steps:
       - intent: begruessen
       - action: utter_gruessen
-      - action: action_hello_world
 
   - rule: user verabschieden
     steps:
@@ -28,8 +27,8 @@ rules:
       - intent: nlu_fallback
       - action: action_two_stage_fallback
       - active_loop: action_two_stage_fallback
-
-  - rule: respond to FAQs
+      
+  - rule: anything_else button 
     steps:
-      - intent: faq
-      - action: utter_qa
+      - intent: anything_else
+      - action: utter_anything_else

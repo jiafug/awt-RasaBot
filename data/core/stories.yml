@@ -1,20 +1,123 @@
 version: "2.0"
 
 stories:
-  - story: wohnung anmelden
+  # topics
+  - story: Wohnung anmelden
     steps:
       - intent: topic_wohnung_anmelden
-      - action: utter_wohung_anmelden
-      - intent: bestaetigen
-      - action: action_listen
+      - action: utter_wohnung_anmelden
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: action_set_topic
+      - action: utter_wohnung_anmelden_basic
+      - action: utter_followup_question
 
-  - story: wohnung abmelden
+  - story: Wohnung anmelden ablehnen
+    steps:
+      - intent: topic_wohnung_anmelden
+      - action: utter_wohnung_anmelden
+      - intent: ablehnen
+      - action: action_restart
+
+  - story: Wohnung anmelden Termin shortcut
+    steps:
+      - intent: topic_wohnung_anmelden
+      - action: utter_wohnung_anmelden
+      - intent: book_appointment
+      - action: action_set_topic
+      - action: utter_book_appointment
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: action_find_appointments
+
+  - story: Wohnung abmelden
     steps:
       - intent: topic_wohnung_abmelden
-      - action: utter_wohung_abmelden
-      - intent: bestaetigen
-      - action: action_listen
+      - action: utter_wohnung_abmelden
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: action_set_topic
+      - action: utter_wohnung_abmelden_basic
+      - action: utter_followup_question
 
+  - story: Wohnung abmelden ablehnen
+    steps:
+      - intent: topic_wohnung_abmelden
+      - action: utter_wohnung_abmelden
+      - intent: ablehnen
+      - action: action_restart
+
+  - story: Wohnung abmelden Termin shortcut
+    steps:
+      - intent: topic_wohnung_abmelden
+      - action: utter_wohnung_abmelden
+      - intent: book_appointment
+      - action: action_set_topic
+      - action: utter_book_appointment
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: action_find_appointments
+
+  # general
+  - story: Q&A
+    steps:
+      - action: utter_followup_question
+      - intent: faq
+      - action: utter_qa
+      - action: utter_followup_question
+
+  - story: Termin finden
+    steps:
+      - action: utter_followup_question
+      - intent: book_appointment
+      - action: utter_book_appointment
+      - or:
+          - intent: bestaetigen
+          - intent: danken
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: action_find_appointments
+
+  - story: Termin finden ablehnen
+    steps:
+      - intent: book_appointment
+      - action: utter_book_appointment
+      - intent: ablehnen
+      - action: utter_followup_question
+
+  - story: vorgeschlagenen Termin buchen
+    steps:
+      - action: action_find_appointments
+      - intent: booking_set_appointment
+      - action: utter_show_appointment_details
+      - action: booking_form_2
+      - active_loop: booking_form_2
+      - active_loop: null
+      - action: action_book_appointment
+      - action: utter_submit
+
+  - story: vorgeschlagenen Termin ablehnen
+    steps:
+      - action: action_find_appointments
+      - intent: booking_reject_appointment
+      - action: action_reset_slot_time
+      - action: booking_form_1
+      - active_loop: booking_form_1
+      - active_loop: null
+      - action: action_find_appointments
+
+  # fallbacks
   - story: falsche sprache fallback
     steps:
       - intent: nlu_fallback
@@ -25,7 +128,6 @@ stories:
       - slot_was_set:
           - language: __other__
       - action: utter_wrong_language
-      - action: action_restart
 
   - story: nicht verstanden fallback (negative sentiment)
     steps:

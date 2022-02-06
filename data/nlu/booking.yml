@@ -1,0 +1,114 @@
+version: "2.0"
+nlu:
+- intent: booking_reject_appointment
+  examples: |
+    - Ein andere Termin
+    - ist noch an Tag frei?
+    - Ist es morgen auch möglich
+    - wie wäre etwas später
+- intent: book_appointment
+  examples: |
+    - Termin buchen
+    - Termin
+    - ich möchte einen Termin
+- intent: booking_set_appointment
+  examples: |
+    - 21:00 Uhr
+    - 23.04.2022 10:30 Uhr
+- intent: inform_name
+  examples: |
+    - Max Mustermann
+    - Maria Musterfrau
+    - Karl Weber
+- intent: inform_email
+  examples: |
+    - kdasmdsa@dasffsad.e
+    - mail@gmail.com
+    - abcd@icloud.com
+- intent: inform_phone-number
+  examples: |
+    - 415-123-3444
+    - +33 4 76095663
+    - (650)-283-4757 ext 897
+- intent: inform_place
+  examples: |
+    - in [Mitte](place)
+    - in der nähe  von [Friedrichshain-Kreuzberg](place)
+    - [Friedrichshain](place) wäre gut
+    - gibt es noch Termine in [Kreuzberg](place)
+    - bei [Pankow](place)
+    - [Spandau](place) ist okey
+    - [Tempelhof-Schöneberg](place) ist gut
+    - [Tempelhof](place)
+    - [Schöneberg](place)
+    - [Treptow-Köpenick](place)
+    - [Treptow](place)
+    - [Köpenick](place)
+    - [Lichtenberg](place)
+    - [Charlottenburg-Wilmersdorf](place)
+    - [Charlottenburg](place)
+    - [Wilmersdorf](place)
+    - [Steglitz-Zehlendorf](place)
+    - [Steglitz](place)
+    - [Zehlendorf](place)
+    - [Neukölln](place)
+    - [Marzahn-Hellersdorf](place)
+    - [Marzahn](place)
+    - [Hellersdorf](place)
+    - [Reinickendorf](place)
+- synonym: Charlottenburg-Wilmersdorf
+  examples: |
+    - Charlottenburg - Wilmersdorf
+    - Charlottenburg
+    - Wilmersdorf
+- synonym: Friedrichshain-Kreuzberg
+  examples: |
+    - Friedrichshain - Kreuzberg
+    - Friedrichshain
+    - Kreuzberg
+- synonym: Tempelhof-Schöneberg
+  examples: |
+    - Tempelhof - Schöneberg
+    - Tempelhof
+    - Schöneberg
+- synonym: Treptow-Köpenick
+  examples: |
+    - Treptow - Köpenick
+    - Treptow
+    - Köpenick
+- synonym: Steglitz-Zehlendorf
+  examples: |
+    - Steglitz - Zehlendorf
+    - Steglitz
+    - Zehlendorf
+- synonym: Marzahn-Hellersdorf
+  examples: |
+    - Marzahn - Hellersdorf
+    - Marzahn
+    - Hellersdorf
+- lookup: place
+  examples: |
+    - Mitte
+    - Friedrichshain-Kreuzberg
+    - Friedrichshain
+    - Kreuzberg
+    - Pankow
+    - Spandau
+    - Tempelhof-Schöneberg
+    - Tempelhof
+    - Schöneberg
+    - Treptow-Köpenick
+    - Treptow
+    - Köpenick
+    - Lichtenberg
+    - Charlottenburg-Wilmersdorf
+    - Charlottenburg
+    - Wilmersdorf
+    - Steglitz-Zehlendorf
+    - Steglitz
+    - Zehlendorf
+    - Neukölln
+    - Marzahn-Hellersdorf
+    - Marzahn
+    - Hellersdorf
+    - Reinickendorf
